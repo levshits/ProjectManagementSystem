@@ -31,10 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Levshits.Data">
-      <HintPath>..\..\libraries\Levshits.Libraries\Levshits.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Levshits.Logic">
-      <HintPath>..\..\libraries\Levshits.Libraries\Levshits.Logic.dll</HintPath>
+      <HintPath>..\libraries\Levshits.Libraries\Levshits.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Blo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

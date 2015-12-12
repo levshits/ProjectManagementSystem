@@ -72,13 +72,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Levshits.Data">
-      <HintPath>..\..\libraries\Levshits.Libraries\Levshits.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Levshits.Logic">
-      <HintPath>..\..\libraries\Levshits.Libraries\Levshits.Logic.dll</HintPath>
+      <HintPath>..\libraries\Levshits.Libraries\Levshits.Data.dll</HintPath>
     </Reference>
     <Reference Include="Levshits.Web.Common">
-      <HintPath>..\..\libraries\Levshits.Libraries\Levshits.Web.Common.dll</HintPath>
+      <HintPath>..\libraries\Levshits.Libraries\Levshits.Web.Common.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.14.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.4\lib\net45-full\log4net.dll</HintPath>
