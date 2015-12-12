@@ -97,9 +97,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PMS\PMS.csproj">
+    <ProjectReference Include="..\PMS\PMS.Web.csproj">
       <Project>{34388823-98ED-47B3-B3D0-C88DA22FA286}</Project>
-      <Name>PMS</Name>
+      <Name>PMS.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

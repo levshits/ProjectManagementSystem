@@ -1,8 +1,8 @@
-using React;
+using PMS.Web;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(PMS.ReactConfig), "Configure")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ReactConfig), "Configure")]
 
-namespace PMS
+namespace PMS.Web
 {
 	public static class ReactConfig
 	{
