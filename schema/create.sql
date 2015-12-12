@@ -26,16 +26,20 @@ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_MediaContent_I
 ALTER TABLE [MediaContent] DROP CONSTRAINT [FK_MediaContent_Issue]
 ;
 
-IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_Principal_Role]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
-ALTER TABLE [Principal] DROP CONSTRAINT [FK_Principal_Role]
-;
-
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_PrincipalProject_Principal]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
 ALTER TABLE [PrincipalProject] DROP CONSTRAINT [FK_PrincipalProject_Principal]
 ;
 
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_PrincipalProject_Project]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
 ALTER TABLE [PrincipalProject] DROP CONSTRAINT [FK_PrincipalProject_Project]
+;
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_PrincipalRole_Principal]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
+ALTER TABLE [PrincipalRole] DROP CONSTRAINT [FK_PrincipalRole_Principal]
+;
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_PrincipalRole_Role]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
+ALTER TABLE [PrincipalRole] DROP CONSTRAINT [FK_PrincipalRole_Role]
 ;
 
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_Project_Principal]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
@@ -104,6 +108,10 @@ DROP TABLE [Principal]
 
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[PrincipalProject]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
 DROP TABLE [PrincipalProject]
+;
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[PrincipalRole]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
+DROP TABLE [PrincipalRole]
 ;
 
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[Project]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
@@ -223,8 +231,6 @@ CREATE TABLE [Principal]
 	[CreateTime] datetime NOT NULL,
 	[Version] int NOT NULL,
 	[Password] nchar(256) NOT NULL,
-	[PasswordSalt] nchar(256) NOT NULL,
-	[RoleId] uniqueidentifier NOT NULL,
 	[Email] nvarchar(200) NOT NULL
 )
 ;
@@ -233,6 +239,15 @@ CREATE TABLE [PrincipalProject]
 (
 	[Id] uniqueidentifier NOT NULL,
 	[ProjectId] uniqueidentifier NOT NULL,
+	[PrincipalId] uniqueidentifier NOT NULL,
+	[CreateTime] datetime NOT NULL
+)
+;
+
+CREATE TABLE [PrincipalRole]
+(
+	[Id] uniqueidentifier NOT NULL,
+	[RoleId] uniqueidentifier NOT NULL,
 	[PrincipalId] uniqueidentifier NOT NULL,
 	[CreateTime] datetime NOT NULL
 )
@@ -253,11 +268,11 @@ CREATE TABLE [Project]
 CREATE TABLE [Role]
 (
 	[Id] uniqueidentifier NOT NULL,
-	[RoleType] uniqueidentifier NOT NULL,
+	[RoleTypeId] uniqueidentifier NOT NULL,
 	[Name] nvarchar(100) NOT NULL,
 	[Description] nvarchar(500),
 	[Version] int NOT NULL,
-	[Creator] uniqueidentifier,
+	[CreatorId] uniqueidentifier,
 	[CreateTime] datetime NOT NULL
 )
 ;
@@ -364,10 +379,6 @@ ALTER TABLE [ObjectType]
 	PRIMARY KEY CLUSTERED ([Id])
 ;
 
-CREATE INDEX [IXFK_Principal_Role] 
- ON [Principal] ([RoleId] ASC)
-;
-
 ALTER TABLE [Principal] 
  ADD CONSTRAINT [PK_Principal]
 	PRIMARY KEY CLUSTERED ([Id])
@@ -386,6 +397,19 @@ ALTER TABLE [PrincipalProject]
 	PRIMARY KEY CLUSTERED ([Id])
 ;
 
+CREATE INDEX [IXFK_PrincipalRole_Principal] 
+ ON [PrincipalRole] ([PrincipalId] ASC)
+;
+
+CREATE INDEX [IXFK_PrincipalRole_Role] 
+ ON [PrincipalRole] ([RoleId] ASC)
+;
+
+ALTER TABLE [PrincipalRole] 
+ ADD CONSTRAINT [PK_PrincipalRole]
+	PRIMARY KEY CLUSTERED ([Id])
+;
+
 CREATE INDEX [IXFK_Project_Principal] 
  ON [Project] ([Creator] ASC)
 ;
@@ -396,7 +420,7 @@ ALTER TABLE [Project]
 ;
 
 CREATE INDEX [IXFK_Role_RoleType] 
- ON [Role] ([RoleType] ASC)
+ ON [Role] ([RoleTypeId] ASC)
 ;
 
 ALTER TABLE [Role] 
@@ -472,10 +496,6 @@ ALTER TABLE [MediaContent] ADD CONSTRAINT [FK_MediaContent_Issue]
 	FOREIGN KEY ([IssueId]) REFERENCES [Issue] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;
 
-ALTER TABLE [Principal] ADD CONSTRAINT [FK_Principal_Role]
-	FOREIGN KEY ([RoleId]) REFERENCES [Role] ([Id]) ON DELETE No Action ON UPDATE No Action
-;
-
 ALTER TABLE [PrincipalProject] ADD CONSTRAINT [FK_PrincipalProject_Principal]
 	FOREIGN KEY ([PrincipalId]) REFERENCES [Principal] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;
@@ -484,12 +504,20 @@ ALTER TABLE [PrincipalProject] ADD CONSTRAINT [FK_PrincipalProject_Project]
 	FOREIGN KEY ([ProjectId]) REFERENCES [Project] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;
 
+ALTER TABLE [PrincipalRole] ADD CONSTRAINT [FK_PrincipalRole_Principal]
+	FOREIGN KEY ([PrincipalId]) REFERENCES [Principal] ([Id]) ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE [PrincipalRole] ADD CONSTRAINT [FK_PrincipalRole_Role]
+	FOREIGN KEY ([RoleId]) REFERENCES [Role] ([Id]) ON DELETE No Action ON UPDATE No Action
+;
+
 ALTER TABLE [Project] ADD CONSTRAINT [FK_Project_Principal]
 	FOREIGN KEY ([Creator]) REFERENCES [Principal] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE [Role] ADD CONSTRAINT [FK_Role_RoleType]
-	FOREIGN KEY ([RoleType]) REFERENCES [RoleType] ([Id]) ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ([RoleTypeId]) REFERENCES [RoleType] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE [RoleAction] ADD CONSTRAINT [FK_RoleAction_Action]

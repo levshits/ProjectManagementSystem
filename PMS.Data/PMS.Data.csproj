@@ -55,14 +55,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\PmsRepository.cs" />
+    <Compile Include="Data\ActionData.cs" />
+    <Compile Include="Data\CommentData.cs" />
+    <Compile Include="Data\ActivityData.cs" />
+    <Compile Include="Data\IssueData.cs" />
+    <Compile Include="Data\MediaContentData.cs" />
+    <Compile Include="Data\LocalisationData.cs" />
+    <Compile Include="Data\ObjectTypeData.cs" />
+    <Compile Include="Data\SprintData.cs" />
+    <Compile Include="Data\RoleTypeData.cs" />
+    <Compile Include="Data\RoleData.cs" />
+    <Compile Include="Data\ProjectData.cs" />
+    <Compile Include="Data\PrincipalData.cs" />
+    <Compile Include="Enity\ActionEntity.cs" />
+    <Compile Include="Enity\ActivityEntity.cs" />
+    <Compile Include="Enity\CommentEntity.cs" />
+    <Compile Include="Enity\IssueEntity.cs" />
+    <Compile Include="Enity\LocalisationEntity.cs" />
+    <Compile Include="Enity\MediaContentEntity.cs" />
+    <Compile Include="Enity\ObjectTypeEntity.cs" />
+    <Compile Include="Enity\PrincipalEntity.cs" />
+    <Compile Include="Enity\PrincipalProjectEntity.cs" />
+    <Compile Include="Enity\PrincipalRoleEntity.cs" />
+    <Compile Include="Enity\ProjectEntity.cs" />
+    <Compile Include="Enity\RoleActionEntity.cs" />
+    <Compile Include="Enity\RoleEntity.cs" />
+    <Compile Include="Enity\RoleTypeActionEntity.cs" />
+    <Compile Include="Enity\RoleTypeEntity.cs" />
+    <Compile Include="Enity\SprintEntity.cs" />
+    <Compile Include="EntityMap\MediaContentEntityMap.cs" />
+    <Compile Include="EntityMap\LocalisationEntityMap.cs" />
+    <Compile Include="EntityMap\IssueEntityMap.cs" />
+    <Compile Include="EntityMap\CommentEntityMap.cs" />
+    <Compile Include="EntityMap\ActivityEntityMap.cs" />
+    <Compile Include="EntityMap\ActionEntityMap.cs" />
+    <Compile Include="EntityMap\PrincipalRoleEntityMap.cs" />
+    <Compile Include="EntityMap\PrincipalProjectEntityMap.cs" />
+    <Compile Include="EntityMap\RoleActionEntityMap.cs" />
+    <Compile Include="EntityMap\RoleEntityMap - Copy.cs" />
+    <Compile Include="EntityMap\RoleEntityMap.cs" />
+    <Compile Include="EntityMap\RoleTypeActionEntityMap.cs" />
+    <Compile Include="EntityMap\RoleTypeEntityMap.cs" />
+    <Compile Include="EntityMap\SprintEntityMap.cs" />
+    <Compile Include="EntityMap\PrincipalEntityMap.cs" />
+    <Compile Include="EntityMap\ObjectTypeEntityMap.cs" />
     <Compile Include="PMSDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Data\" />
-    <Folder Include="Enity\" />
-    <Folder Include="EntityMap\" />
     <Folder Include="Mapper\" />
   </ItemGroup>
   <ItemGroup>
