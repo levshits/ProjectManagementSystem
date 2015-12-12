@@ -5,4 +5,8 @@
   </object>
   <object id="HomeController" type="PMS.Web.Controllers.HomeController, PMS.Web" parent="BaseController" singleton="false">
   </object>
+  
+  <object id="PrincipalController" type="PMS.Web.Controllers.PrincipalController, PMS.Web" singleton="false">
+  </object>
+  
 </objects>
