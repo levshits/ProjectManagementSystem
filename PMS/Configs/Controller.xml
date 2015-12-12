@@ -1,4 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net">
-
+  <object id="BaseController" type="Levshits.Web.Common.Controllers.BaseController" abstract="true">
+    <property name="CommandBus" ref="TransactionalCommandBus"/>
+  </object>
+  <object id="HomeController" type="PMS.Web.Controllers.HomeController, PMS.Web" parent="BaseController" singleton="false">
+  </object>
 </objects>
