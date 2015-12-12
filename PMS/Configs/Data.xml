@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <object id="DataMapper" type="PMS.Data.Mapper.DataMapper, PMS.Data" singleton="true"/>
+
+  <!--Sesion storage-->
+  <object id="HttpSessionStorage" type="Levshits.Data.Storage.HttpSessionStorage, Levshits.Data" singleton="true"/>
+
+  <!--Data provider-->
+  <object id="BaseDataProvider" type="Levshits.Data.DataProvider, Levshits.Data" abstract="true">
+    <constructor-arg name="storage" ref="HttpSessionStorage"/>
+  </object>
+
+  <!--ADB Data provider-->
+  <object id="PmsDataProvider" type="PMS.Data.Common.PmsDataProvider, PMS.Data" parent="BaseDataProvider" singleton="true">
+  </object>
+
+  <!--Base data-->
+  <object id="BaseData" type="Levshits.Data.Data.BaseData, Levshits.Data" abstract="true">
+    <constructor-arg name="dataProvider" ref="PmsDataProvider"/>
+  </object>
+
+  <!--ActionData-->
+  <object id="ActionData" type="PMS.Data.Data.ActionData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--ActivityData-->
+  <object id="ActivityData" type="PMS.Data.Data.ActivityData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--CommentData-->
+  <object id="CommentData" type="PMS.Data.Data.CommentData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--IssueData-->
+  <object id="IssueData" type="PMS.Data.Data.IssueData, PMS.Data" parent="BaseData">
+  </object>  
+  
+  <!--LocalisationData-->
+  <object id="LocalisationData" type="PMS.Data.Data.LocalisationData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--MediaContentData-->
+  <object id="MediaContentData" type="PMS.Data.Data.MediaContentData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--ObjectTypeData-->
+  <object id="ObjectTypeData" type="PMS.Data.Data.ObjectTypeData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--PrincipalData-->
+  <object id="PrincipalData" type="PMS.Data.Data.PrincipalData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--ProjectData-->
+  <object id="ProjectData" type="PMS.Data.Data.ProjectData, PMS.Data" parent="BaseData">
+  </object>  
+  
+  <!--RoleData-->
+  <object id="RoleData" type="PMS.Data.Data.RoleData, PMS.Data" parent="BaseData">
+  </object> 
+  
+  <!--RoleTypeData-->
+  <object id="RoleTypeData" type="PMS.Data.Data.RoleTypeData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--RoleTypeData-->
+  <object id="SprintData" type="PMS.Data.Data.SprintData, PMS.Data" parent="BaseData">
+  </object>
+
+  <!--Repository-->
+  <object id="Repository" type="PMS.Data.Common.PmsRepository" singleton="true">
+    <property name="ActionData" ref="ActionData"/>
+    <property name="ActivityData" ref="ActivityData"/>
+    <property name="CommentData" ref="CommentData"/>
+    <property name="IssueData" ref="IssueData"/>
+    <property name="LocalisationData" ref="LocalisationData"/>
+    <property name="MediaContentData" ref="MediaContentData"/>
+    <property name="ObjectTypeData" ref="ObjectTypeData"/>
+    <property name="PrincipalData" ref="PrincipalData"/>
+    <property name="ProjectData" ref="ProjectData"/>
+    <property name="RoleData" ref="RoleData"/>
+    <property name="RoleTypeData" ref="RoleTypeData"/>
+    <property name="SprintData" ref="SprintData"/>
+  </object>
+</objects>

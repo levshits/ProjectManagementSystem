@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS", "PMS\PMS.csproj", "{34388823-98ED-47B3-B3D0-C88DA22FA286}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.Web", "PMS\PMS.Web.csproj", "{34388823-98ED-47B3-B3D0-C88DA22FA286}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.Tests", "PMS.Tests\PMS.Tests.csproj", "{4FD59AFD-AB1A-427A-9855-9D9AC8E89E6E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.Data", "PMS.Data\PMS.Data.csproj", "{7D0B2CF3-D067-400C-AB7E-9EEFDCB7026D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.Logic", "PMS.Logic\PMS.Logic.csproj", "{D2351220-BA0D-4983-803E-6FEBBA0BE238}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PMS.Common", "PMS.Common\PMS.Common.csproj", "{BA8E4198-7B2C-48BE-8801-85A4BB4BD1B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D2351220-BA0D-4983-803E-6FEBBA0BE238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2351220-BA0D-4983-803E-6FEBBA0BE238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2351220-BA0D-4983-803E-6FEBBA0BE238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8E4198-7B2C-48BE-8801-85A4BB4BD1B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8E4198-7B2C-48BE-8801-85A4BB4BD1B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8E4198-7B2C-48BE-8801-85A4BB4BD1B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8E4198-7B2C-48BE-8801-85A4BB4BD1B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

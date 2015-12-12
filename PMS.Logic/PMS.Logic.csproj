@@ -31,10 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Levshits.Data">
-      <HintPath>..\..\libraries\Levshits.Libraries\Levshits.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Levshits.Logic">
-      <HintPath>..\..\libraries\Levshits.Libraries\Levshits.Logic.dll</HintPath>
+      <HintPath>..\libraries\Levshits.Libraries\Levshits.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,7 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blo\PrincipalBlo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMS.Common\PMS.Common.csproj">
+      <Project>{ba8e4198-7b2c-48be-8801-85a4bb4bd1b4}</Project>
+      <Name>PMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Data\PMS.Data.csproj">
+      <Project>{7d0b2cf3-d067-400c-ab7e-9eefdcb7026d}</Project>
+      <Name>PMS.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
