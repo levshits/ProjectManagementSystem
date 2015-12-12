@@ -193,6 +193,15 @@
     <None Include="ClearScript.V8\v8-x64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Configs\Logic.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configs\Data.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configs\Controller.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Configs\Common.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -236,6 +245,20 @@
     <Folder Include="Content\Js\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PMS.Common\PMS.Common.csproj">
+      <Project>{ba8e4198-7b2c-48be-8801-85a4bb4bd1b4}</Project>
+      <Name>PMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Data\PMS.Data.csproj">
+      <Project>{7d0b2cf3-d067-400c-ab7e-9eefdcb7026d}</Project>
+      <Name>PMS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PMS.Logic\PMS.Logic.csproj">
+      <Project>{d2351220-ba0d-4983-803e-6febba0be238}</Project>
+      <Name>PMS.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

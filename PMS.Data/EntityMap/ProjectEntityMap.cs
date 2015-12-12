@@ -19,6 +19,7 @@ namespace PMS.Data.EntityMap
             Map(x => x.CreatorId);
 
             References(x => x.CreatorIdObject).Column(nameof(ProjectEntity.CreatorId)).ReadOnly();
+            HasMany(x => x.IssueEntities).Cascade.AllDeleteOrphan();
         }
     }
 }

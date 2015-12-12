@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Levshits.Data.Entity;
 
 namespace PMS.Data.Enity
@@ -11,5 +12,11 @@ namespace PMS.Data.Enity
         public virtual Guid CreatorId { get; set; }
         public virtual PrincipalEntity CreatorIdObject { get; set; }
         public virtual DateTime CreateTime { get; set; }
+        public virtual IList<IssueEntity> IssueEntities { get; protected set; }
+
+        public ProjectEntity()
+        {
+            IssueEntities = new List<IssueEntity>();
+        }
     }
 }

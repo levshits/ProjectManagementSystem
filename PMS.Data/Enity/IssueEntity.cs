@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Levshits.Data.Entity;
 
 namespace PMS.Data.Enity
@@ -16,5 +17,13 @@ namespace PMS.Data.Enity
         public virtual PrincipalEntity AssigneeIdObject { get; set; }
         public virtual TimeSpan EstimatedTime { get; set; }
         public virtual DateTime CreateTime { get; set; }
+        public virtual IList<CommentEntity> CommentEntities { get; protected set; }
+        public virtual IList<MediaContentEntity> MediaContentEntities { get; protected set; }
+
+        public IssueEntity()
+        {
+            CommentEntities = new List<CommentEntity>();
+            MediaContentEntities = new List<MediaContentEntity>();
+        }
     }
 }

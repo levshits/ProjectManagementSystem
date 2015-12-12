@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\PmsDataProvider.cs" />
     <Compile Include="Common\PmsRepository.cs" />
     <Compile Include="Data\ActionData.cs" />
     <Compile Include="Data\CommentData.cs" />
@@ -93,19 +94,18 @@
     <Compile Include="EntityMap\PrincipalRoleEntityMap.cs" />
     <Compile Include="EntityMap\PrincipalProjectEntityMap.cs" />
     <Compile Include="EntityMap\RoleActionEntityMap.cs" />
-    <Compile Include="EntityMap\RoleEntityMap - Copy.cs" />
+    <Compile Include="EntityMap\ProjectEntityMap.cs" />
     <Compile Include="EntityMap\RoleEntityMap.cs" />
     <Compile Include="EntityMap\RoleTypeActionEntityMap.cs" />
     <Compile Include="EntityMap\RoleTypeEntityMap.cs" />
     <Compile Include="EntityMap\SprintEntityMap.cs" />
     <Compile Include="EntityMap\PrincipalEntityMap.cs" />
     <Compile Include="EntityMap\ObjectTypeEntityMap.cs" />
+    <Compile Include="Mapper\DataMapper.cs" />
     <Compile Include="PMSDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mapper\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

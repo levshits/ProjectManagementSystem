@@ -18,6 +18,8 @@ namespace PMS.Data.EntityMap
             Map(x => x.Description);
 
             References(x => x.CreatorIdObject).Column(nameof(RoleEntity.CreatorId)).ReadOnly();
+
+            HasManyToMany(x => x.ActionEntities).Cascade.All().Inverse().Table("RoleAction");
         }
     }
 }

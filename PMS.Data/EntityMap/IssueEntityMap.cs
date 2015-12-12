@@ -24,6 +24,9 @@ namespace PMS.Data.EntityMap
 
             References(x => x.ProjectIdObject).Column(nameof(IssueEntity.ProjectId)).ReadOnly();
             References(x => x.AssigneeIdObject).Column(nameof(IssueEntity.AssigneeId)).ReadOnly();
+
+            HasMany(x => x.MediaContentEntities).Cascade.AllDeleteOrphan();
+            HasMany(x => x.CommentEntities).Cascade.AllDeleteOrphan();
         }
     }
 }
