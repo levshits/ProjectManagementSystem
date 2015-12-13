@@ -10,6 +10,6 @@ namespace PMS.Common.Dto
         public DateTime CreateTime { get; set; }
         public string Email { get; set; }
         public IList<RoleDto> Roles { get; set; }
-        public IList<ActionsDto> Actions { get; set; }
+        public IList<ActionDto> Actions { get; set; }
     }
 }

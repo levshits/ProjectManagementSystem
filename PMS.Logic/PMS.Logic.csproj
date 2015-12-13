@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blo\LocalisationBlo.cs" />
     <Compile Include="Blo\PrincipalBlo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

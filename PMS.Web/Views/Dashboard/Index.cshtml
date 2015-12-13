@@ -1,8 +1,9 @@
-﻿@model DashboardModel
+﻿@using PMS.Web.HtmlHelpers
+@model DashboardModel
 
 @{
-    ViewBag.Title = "Dashboard";
+    ViewBag.Title = @Html.Text("Dashboard");
     Layout = "~/Views/Shared/_PrivateLayout.cshtml";
 }
 
-<h2>Dashboard</h2>
+<h2>@Html.Text("Dashboard")</h2>

@@ -10,6 +10,6 @@ namespace PMS.Common.Dto
         public virtual string Description { get; set; }
         public virtual Guid CreatorId { get; set; }
         public virtual DateTime CreateTime { get; set; }
-        public virtual IList<ActionsDto> ActionEntities { get; protected set; }
+        public virtual IList<ActionDto> ActionEntities { get; protected set; }
     }
 }

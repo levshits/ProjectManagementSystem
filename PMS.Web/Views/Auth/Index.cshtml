@@ -1,12 +1,13 @@
 ﻿@using PMS.Web.Controllers
+@using PMS.Web.HtmlHelpers
 @model PMS.Web.Models.UserLoginModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @Html.Text("Login");
     Layout = "~/Views/Shared/_LandingLayout.cshtml";
 }
 <div class="container">
-    <h2>Login</h2>
+    <h2>@Html.Text("Login")</h2>
     @using (Html.BeginForm(AuthController.LoginAction, AuthController.Name))
     {
         @Html.AntiForgeryToken()

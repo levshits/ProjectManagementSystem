@@ -31,11 +31,11 @@ namespace PMS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ExecutionResult<PrincipalDto> result = (ExecutionResult<PrincipalDto>) CommandBus.ExecuteCommand(new LoginRequest()
+                ExecutionResult<PrincipalDto> result = CommandBus.ExecuteCommand(new LoginRequest()
                 {
                     Username = model.Username, Password = model.Password
-                });
-                if (result.Success)
+                }) as ExecutionResult<PrincipalDto>;
+                if (result != null && (result.Success && result.TypedResult!=null))
                 {
                     UserPrincipal.CurrentUser = new UserPrincipal(result.TypedResult);
                     PrepareCookieForCurrentPrincipal(HttpContext);

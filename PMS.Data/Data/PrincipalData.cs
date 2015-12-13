@@ -14,7 +14,7 @@ namespace PMS.Data.Data
         public PrincipalEntity GetUserByUsernameAndPassword(string username, string password)
         {
             PrincipalEntity principal = null;
-            var query = DataProvider.Query<PrincipalEntity>();
+            var query = DataProvider.QueryOver(() => principal);
             query.Where(x => x.Username == username && x.Password == password);
             return query.SingleOrDefault();
         }

@@ -10,6 +10,12 @@ namespace PMS.Data.Mappers
         {
             Mapper.CreateMap<PrincipalEntity, PrincipalDto>();
             Mapper.CreateMap<PrincipalDto, PrincipalEntity>();
+
+            Mapper.CreateMap<RoleEntity, RoleDto>();
+            Mapper.CreateMap<RoleDto, RoleEntity>();
+
+            Mapper.CreateMap<ActionEntity, ActionDto>();
+            Mapper.CreateMap<ActionDto, ActionEntity>();
         } 
     }
 }

@@ -14,7 +14,11 @@
     <constructor-arg name="repository" ref="Repository"/>
   </object>
 
-  <!--BloBase-->
+  <!--PrincipalBlo-->
   <object id="PrincipalBlo" type="PMS.Logic.Blo.PrincipalBlo" parent="BloBase" init-method="Init">
+  </object>
+
+  <!--LocalisationBlo-->
+  <object id="LocalisationBlo" type="PMS.Logic.Blo.LocalisationBlo" parent="BloBase" init-method="Init">
   </object>
 </objects>

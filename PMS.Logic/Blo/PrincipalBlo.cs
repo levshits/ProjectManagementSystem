@@ -36,6 +36,7 @@ namespace PMS.Logic.Blo
             PrincipalDto dto = Mapper.Map<PrincipalDto>(entity);
             dto.Roles = entity.RoleEntities.Select(x => Mapper.Map<RoleDto>(x)).ToList();
             IList<ActionEntity> actions = entity.RoleEntities.SelectMany(x => x.ActionEntities).ToList();
+            dto.Actions = actions.Select(x => Mapper.Map<ActionDto>(x)).ToList();
             return new ExecutionResult<PrincipalDto> {TypedResult = dto};
         }
 

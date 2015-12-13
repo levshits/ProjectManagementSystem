@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\ActionsDto.cs" />
+    <Compile Include="Dto\ActionDto.cs" />
     <Compile Include="Dto\PrincipalDto.cs" />
     <Compile Include="Dto\RoleDto.cs" />
     <Compile Include="Immutable\Actions.cs" />
@@ -54,6 +54,7 @@
     <Compile Include="Immutable\PriorityLevels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\LoginRequest.cs" />
+    <Compile Include="Request\TranslateRequest.cs" />
     <Compile Include="UserPrincipal.cs" />
   </ItemGroup>
   <ItemGroup>

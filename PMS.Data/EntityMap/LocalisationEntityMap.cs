@@ -10,9 +10,8 @@ namespace PMS.Data.EntityMap
             Table("Localisation");
 
             Id(x => x.Id).GeneratedBy.Guid();
-            Version(x => x.Version);
 
-            Map(x => x.Key);
+            Map(x => x.TranslationKey);
             Map(x => x.Value);
             Map(x => x.LanguageId);
         }
