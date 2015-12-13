@@ -108,7 +108,6 @@
     <Compile Include="EntityMap\PrincipalEntityMap.cs" />
     <Compile Include="EntityMap\ObjectTypeEntityMap.cs" />
     <Compile Include="Mappers\DataMapper.cs" />
-    <Compile Include="PMSDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

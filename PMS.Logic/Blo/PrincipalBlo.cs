@@ -8,6 +8,7 @@ using Levshits.Data;
 using Levshits.Data.Common;
 using PMS.Common.Dto;
 using PMS.Common.Immutable;
+using PMS.Common.ListItem;
 using PMS.Common.Request;
 using PMS.Data.Common;
 using PMS.Data.Enity;
@@ -25,10 +26,28 @@ namespace PMS.Logic.Blo
         public override void Init()
         {
             RegisterCommand<LoginRequest>(LoginRequestHandler);
-            RegisterCommand<GetEntityDtoByIdRequest>(GetEntityByIdRequestHandler);
+            RegisterCommand<GetEntityDtoByIdRequest<PrincipalDto>>(GetEntityByIdRequestHandler);
+            RegisterCommand<SaveRequest<PrincipalDto>>(SavePrincipalRequestHandler);
+            RegisterCommand<ListRequest<PrincipalListItem>>(ListRequestHandler);
         }
 
-        private ExecutionResult GetEntityByIdRequestHandler(GetEntityDtoByIdRequest request, ExecutionContext context)
+        private ExecutionResult ListRequestHandler(ListRequest<PrincipalListItem> request, ExecutionContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        private ExecutionResult SavePrincipalRequestHandler(SaveRequest<PrincipalDto> request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            var entity = Mapper.Map<PrincipalExtendedEntity>(request.Dto);
+            PmsRepository.PrincipalData.Save(entity);
+            return new ExecutionResult();
+        }
+
+        private ExecutionResult GetEntityByIdRequestHandler(GetEntityDtoByIdRequest<PrincipalDto> request, ExecutionContext context)
         {
             var entity = PmsRepository.PrincipalData.GetEntityById(request.EntityId);
             PrincipalDto dto = Mapper.Map<PrincipalDto>(entity);

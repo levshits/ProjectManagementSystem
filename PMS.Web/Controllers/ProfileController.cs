@@ -20,7 +20,7 @@ namespace PMS.Web.Controllers
         {
             UserPrincipal principal = UserPrincipal.CurrentUser;
             ExecutionResult<PrincipalDto> result =
-                CommandBus.ExecuteCommand(new GetEntityDtoByIdRequest() {EntityId = principal.Id}) as ExecutionResult<PrincipalDto>;
+                CommandBus.ExecuteCommand(new GetEntityDtoByIdRequest<PrincipalDto>() {EntityId = principal.Id}) as ExecutionResult<PrincipalDto>;
             if (result != null && result.Success && result.TypedResult != null)
             {
                 var model = Mapper.Map<UserDetailsModel>(result.TypedResult);
