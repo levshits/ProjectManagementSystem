@@ -16,12 +16,12 @@ namespace PMS.Common.Immutable
         public const string CreateProject = "F799004B-096F-4DC3-9D15-60699D23E918";
         public const string ViewProject = "A1691A4E-5AEF-4023-A8EB-95C103D2C925";
         public const string SaveProject = "182A68E0-9A54-4BD5-B03F-A1FDC44E5FE0";
+
         public const string CreateIssue = "333193E7-285D-4BB5-8703-8AE44428452A";
         public const string CloseIssue = "8243DA28-1CC4-4757-8715-9C8C5B165F77";
         public const string ResolveIssue = "740C964A-0D72-4872-B444-2DE0B14183DB";
         public const string ReopenIssue = "6FA8DD08-BDE9-4877-A249-98B225CE1C89";
-        public const string CommentIssue = "C7E27578-F22F-4488-9F60-B50FDCAE64D8";
-        public const string AttachContentToIssue = "CD452935-8F5A-42D5-9644-4FB4A3D79B6A";
+
         public const string CreateSprint = "87D78981-8561-4E7B-B941-AE65B85C6155";
         public const string ViewSprint = "DBE3CFBE-F5FA-40AC-A39F-964D4F7C4AB0";
         public const string SaveSprint = "CB2E31CC-0932-461F-85C3-BE94D9FD73CF";

@@ -8,11 +8,13 @@ namespace PMS.Common.Immutable
         public const string Project = "B175B017-1BCE-4FAE-9AD2-7C61FDE7D5A0";
         public const string Role = "F5FDE65F-A4E2-4D54-8E7D-08A170E2746A";
         public const string Issue = "0639E136-CC53-4BE3-8E92-D8940B829FFD";
+        public const string Sprint = "BC9A4ABF-706A-49F2-9FDA-84BE26AC3DBC";
 
         public static readonly Guid PRINCIPAL = new Guid(Principal);
         public static readonly Guid PROJECT = new Guid(Project);
         public static readonly Guid ROLE = new Guid(Role);
         public static readonly Guid ISSUE = new Guid(Issue);
+        public static readonly Guid SPRING = new Guid(Sprint);
         
     }
 }

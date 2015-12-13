@@ -1,19 +1,61 @@
 INSERT INTO [dbo].[Principal]
-           ([Id]
-           ,[Username]
-           ,[CreateTime]
-           ,[Version]
-           ,[Password]
-           ,[Email])
+           ([Id], [Username], [CreateTime], [Version],[Password] ,[Email])
      VALUES
            ('FBE76230-FD68-4A88-B023-EB824D2AB9A8','su', SYSDATETIME(),1
            ,'26857F0074D5E2393884B7B1AA9EFC5E919D1111CEF6E3B06C13DBA5119CF882C317F8F4987A30E533EB786F138A876DF4B3258A195BEE819692600B7B6236BF'
            ,'su@user.com');
-INSERT INTO [dbo].[User]
-           ([Id]
-           ,[FirstName]
-           ,[LastName])
+INSERT INTO [dbo].[PrincipalExtended]
+           ([Id],[FirstName],[LastName])
      VALUES
            ('FBE76230-FD68-4A88-B023-EB824D2AB9A8','su','su');
 
+INSERT INTO [dbo].[ObjectType] ([Id], [Name])
+Values('02B85078-AFDD-4CB7-B52A-7963B0B6FC84', 'Principal');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('654D750A-3EBD-4DCB-B135-E8C385E13147','Create principal', '02B85078-AFDD-4CB7-B52A-7963B0B6FC84');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('7FCB7D6D-E9A5-4FA9-8A33-D801DDEFFEE0','View principal', '02B85078-AFDD-4CB7-B52A-7963B0B6FC84');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('C6DAC871-C60E-486A-895D-9141ADE25E7C','Save principal', '02B85078-AFDD-4CB7-B52A-7963B0B6FC84');
+
+INSERT INTO [dbo].[ObjectType] ([Id], [Name])
+Values('B175B017-1BCE-4FAE-9AD2-7C61FDE7D5A0', 'Project');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('F799004B-096F-4DC3-9D15-60699D23E918','Create project', 'B175B017-1BCE-4FAE-9AD2-7C61FDE7D5A0');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('A1691A4E-5AEF-4023-A8EB-95C103D2C925','View project', 'B175B017-1BCE-4FAE-9AD2-7C61FDE7D5A0');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('182A68E0-9A54-4BD5-B03F-A1FDC44E5FE0','Save project', 'B175B017-1BCE-4FAE-9AD2-7C61FDE7D5A0');
+
+
+INSERT INTO [dbo].[ObjectType] ([Id], [Name])
+Values('F5FDE65F-A4E2-4D54-8E7D-08A170E2746A', 'Role');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('39DB2DBA-387C-4400-AC39-C136F8A481DF','Save role', 'F5FDE65F-A4E2-4D54-8E7D-08A170E2746A');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('8CB90CDF-324F-4D5A-AE1E-3EB489B8C524','Create role', 'F5FDE65F-A4E2-4D54-8E7D-08A170E2746A');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('EC3A247C-4F56-401A-8101-0B8407DB9347','Remove role', 'F5FDE65F-A4E2-4D54-8E7D-08A170E2746A');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('8B480214-F6BC-4646-8AEE-A8AC2FF938A5','View role', 'F5FDE65F-A4E2-4D54-8E7D-08A170E2746A');
+
+INSERT INTO [dbo].[ObjectType] ([Id], [Name])
+Values('0639E136-CC53-4BE3-8E92-D8940B829FFD', 'Issue');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('333193E7-285D-4BB5-8703-8AE44428452A','Create issue', '0639E136-CC53-4BE3-8E92-D8940B829FFD');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('8243DA28-1CC4-4757-8715-9C8C5B165F77','Close issue', '0639E136-CC53-4BE3-8E92-D8940B829FFD');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('740C964A-0D72-4872-B444-2DE0B14183DB','Resolve issue', '0639E136-CC53-4BE3-8E92-D8940B829FFD');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('6FA8DD08-BDE9-4877-A249-98B225CE1C89','Resolve issue', '0639E136-CC53-4BE3-8E92-D8940B829FFD');
+
+INSERT INTO [dbo].[ObjectType] ([Id], [Name])
+Values('BC9A4ABF-706A-49F2-9FDA-84BE26AC3DBC', 'Sprint');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('87D78981-8561-4E7B-B941-AE65B85C6155','Create sprint', 'BC9A4ABF-706A-49F2-9FDA-84BE26AC3DBC');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('DBE3CFBE-F5FA-40AC-A39F-964D4F7C4AB0','View sprint', 'BC9A4ABF-706A-49F2-9FDA-84BE26AC3DBC');
+INSERT INTO [dbo].[Action] ([Id], [Name], [ObjectTypeId])
+VALUES('CB2E31CC-0932-461F-85C3-BE94D9FD73CF','Save sprint', 'BC9A4ABF-706A-49F2-9FDA-84BE26AC3DBC');
 
