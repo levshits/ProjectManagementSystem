@@ -10,7 +10,6 @@ namespace PMS.Data.EntityMap
             Table("Action");
 
             Id(x => x.Id).GeneratedBy.Guid();
-            Version(x => x.Version);
 
             Map(x => x.Name);
             Map(x => x.ObjectTypeId);

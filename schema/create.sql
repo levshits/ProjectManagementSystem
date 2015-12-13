@@ -216,7 +216,7 @@ CREATE TABLE [Issue]
 CREATE TABLE [Localisation]
 (
 	[Id] uniqueidentifier NOT NULL,
-	[TranslateKey] nvarchar(200) NOT NULL,
+	[TranslationKey] nvarchar(200) NOT NULL,
 	[Value] nvarchar(3000) NOT NULL,
 	[LanguageId] int NOT NULL
 )

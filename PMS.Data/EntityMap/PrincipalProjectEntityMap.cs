@@ -10,7 +10,6 @@ namespace PMS.Data.EntityMap
             Table("PrincipalProject");
 
             Id(x => x.Id).GeneratedBy.Guid();
-            Version(x => x.Version);
 
             Map(x => x.PrincipalId);
             Map(x => x.ProjectId);

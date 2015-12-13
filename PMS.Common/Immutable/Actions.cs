@@ -44,8 +44,6 @@ namespace PMS.Common.Immutable
         public static readonly Guid CLOSE_ISSUE = new Guid(CloseIssue);
         public static readonly Guid RESOLVE_ISSUE = new Guid(ResolveIssue);
         public static readonly Guid REOPEN_ISSUE = new Guid(ReopenIssue);
-        public static readonly Guid COMMENT_ISSUE = new Guid(CommentIssue);
-        public static readonly Guid ATTACH_CONTENT_TO_ISSUE = new Guid(AttachContentToIssue);
 
         public static readonly Guid CREATE_SPRINT = new Guid(CreateSprint);
         public static readonly Guid VIEW_SPRINT = new Guid(ViewSprint);

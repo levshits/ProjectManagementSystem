@@ -47,8 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blo\ActivityBlo.cs" />
+    <Compile Include="Blo\IssueBlo.cs" />
     <Compile Include="Blo\LocalisationBlo.cs" />
+    <Compile Include="Blo\MediaContentBlo.cs" />
     <Compile Include="Blo\PrincipalBlo.cs" />
+    <Compile Include="Blo\ProjectBlo.cs" />
+    <Compile Include="Blo\RoleBlo.cs" />
+    <Compile Include="Blo\RoleTypeBlo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
