@@ -1,11 +1,51 @@
-﻿@{
+﻿@using PMS.Common
+@using PMS.Web.Controllers
+@{
     Layout = "_Layout.cshtml";
+    UserPrincipal principal = (UserPrincipal) User;
 }
-<header class="header">
-    <div class="text-vertical-center">
-        @RenderBody()
+<div>
+    <div class="body">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("PMS", DashboardController.IndexAction, DashboardController.Name, new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Projects", ProjectController.IndexAction, ProjectController.Name)</li>
+                        <li>@Html.ActionLink("Issues", IssueController.IndexAction, IssueController.Name)</li>
+                        <li>@Html.ActionLink("Sprints", SprintController.IndexAction, SprintController.Name)</li>
+                        <li>@Html.ActionLink("Users", UserController.IndexAction, UserController.Name)</li>
+                        <li>@Html.ActionLink("Roles", RoleController.IndexAction, RoleController.Name)</li>
+                        <li>@Html.ActionLink("Profile", UserController.DetailsAction, UserController.Name)</li>
+                        <li>@Html.ActionLink("Logout", AuthController.LogoutAction, AuthController.Name)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <br />
+            <br />
+            <br />
+            <br />
+            @RenderBody()
+
+
+        </div>
     </div>
-</header>
+</div>
+<br />
+<footer class="footer">
+    <div class="container text-center">
+        <p>&copy; @DateTime.Now.Year - ADB</p>
+    </div>
+</footer>
 
 @section Scripts{
     @RenderSection("Scripts", false)

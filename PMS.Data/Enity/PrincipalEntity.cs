@@ -13,12 +13,14 @@ namespace PMS.Data.Enity
         public virtual IList<ProjectEntity> ProjectEntities { get; set; }
         public virtual IList<IssueEntity> IssueEntities { get; set; }
         public virtual IList<RoleEntity> RoleEntities { get; set; }
+        public virtual IList<ActionEntity> ActionEntities { get; set; }
 
         public PrincipalEntity()
         {
             ProjectEntities = new List<ProjectEntity>();
             IssueEntities = new List<IssueEntity>();
             RoleEntities = new List<RoleEntity>();
+            ActionEntities = new List<ActionEntity>();
         }
     }
 }

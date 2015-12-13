@@ -17,8 +17,12 @@ namespace PMS.Data.EntityMap
             Map(x => x.Password);
             Map(x => x.CreateTime);
 
-            HasManyToMany(x => x.RoleEntities).Cascade.None().Inverse().Table("PrincipalRole");
-            HasManyToMany(x => x.ProjectEntities).Cascade.None().Inverse().Table("PrincipalProject");
+            HasManyToMany(x => x.RoleEntities).Cascade.AllDeleteOrphan().Table("PrincipalRole")
+                .ParentKeyColumn(nameof(PrincipalRoleEntity.PrincipalId))
+                .ChildKeyColumn(nameof(PrincipalRoleEntity.RoleId));
+            HasManyToMany(x => x.ProjectEntities).Cascade.All().Table("PrincipalProject")
+                .ParentKeyColumn(nameof(PrincipalProjectEntity.PrincipalId))
+                .ChildKeyColumn(nameof(PrincipalProjectEntity.ProjectId));
             HasMany(x => x.IssueEntities).Cascade.None().Inverse();
         }
     }

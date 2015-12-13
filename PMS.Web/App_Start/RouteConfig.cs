@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using PMS.Web.Controllers;
 
 namespace PMS.Web
 {
@@ -12,7 +13,7 @@ namespace PMS.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = DashboardController.Name, action = DashboardController.IndexAction, id = UrlParameter.Optional }
             );
         }
     }

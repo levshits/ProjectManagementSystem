@@ -13,6 +13,7 @@ namespace PMS.Web.Controllers
 {
     public class AuthController : BaseController
     {
+        public const string LogoutAction = "Logout";
         public SelfCleanableStorage SelfCleanableStorage { get; set; }
         public const string IndexAction = "Index";
         public const string LoginAction = "Login";
@@ -25,6 +26,7 @@ namespace PMS.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(UserLoginModel model)
         {
             if (ModelState.IsValid)

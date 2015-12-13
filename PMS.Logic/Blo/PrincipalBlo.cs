@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -32,7 +33,9 @@ namespace PMS.Logic.Blo
         {
             var password = PreparePassword(request.Password);
             PrincipalEntity entity = PmsRepository.PrincipalData.GetUserByUsernameAndPassword(request.Username, password);
-            var dto = Mapper.Map<PrincipalDto>(entity);
+            PrincipalDto dto = Mapper.Map<PrincipalDto>(entity);
+            dto.Roles = entity.RoleEntities.Select(x => Mapper.Map<RoleDto>(x)).ToList();
+            IList<ActionEntity> actions = entity.RoleEntities.SelectMany(x => x.ActionEntities).ToList();
             return new ExecutionResult<PrincipalDto> {TypedResult = dto};
         }
 

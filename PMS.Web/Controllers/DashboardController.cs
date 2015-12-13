@@ -5,7 +5,7 @@ using PMS.Web.Models;
 namespace PMS.Web.Controllers
 {
     [Authorize]
-    public class DashboardController: BaseController
+    public class DashboardController: PrivateController
     {
         public const string IndexAction = "Index";
         public const string Name = "Dashboard";

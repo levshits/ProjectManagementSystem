@@ -6,6 +6,22 @@
   
   <object id="DashboardController" type="PMS.Web.Controllers.DashboardController, PMS.Web" parent="BaseController" singleton="false">
   </object>
+  <object id="RoleController" type="PMS.Web.Controllers.RoleController, PMS.Web" parent="BaseController" singleton="false">
+  </object>
+  <object id="ActivityController" type="PMS.Web.Controllers.ActivityController, PMS.Web" parent="BaseController" singleton="false">
+  </object>
+  <object id="IssueController" type="PMS.Web.Controllers.IssueController, PMS.Web" parent="BaseController" singleton="false">
+  </object>
+  <object id="MediaContentController" type="PMS.Web.Controllers.MediaContentController, PMS.Web" parent="BaseController" singleton="false">
+  </object>
+  <object id="ProjectController" type="PMS.Web.Controllers.ProjectController, PMS.Web" parent="BaseController" singleton="false">
+  </object>
+  <object id="SettingController" type="PMS.Web.Controllers.SettingController, PMS.Web" parent="BaseController" singleton="false">
+  </object>
+  <object id="SprintController" type="PMS.Web.Controllers.SprintController, PMS.Web" parent="BaseController" singleton="false">
+  </object>  
+  <object id="UserController" type="PMS.Web.Controllers.UserController, PMS.Web" parent="BaseController" singleton="false">
+  </object>
   
   <object id="AuthController" type="PMS.Web.Controllers.AuthController, PMS.Web" parent="BaseController" singleton="false">
     <property name="SelfCleanableStorage" ref="SelfCleanableStorage"/>

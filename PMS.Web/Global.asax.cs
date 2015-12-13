@@ -46,7 +46,7 @@ namespace PMS.Web
 
                     user = selfCleanableStorage[sessionIdStr] as UserPrincipal;
 
-                    if (ticket.Expired || (user != null))
+                    if (ticket.Expired || (user == null))
                     {
                         user = UserPrincipal.Empty;
                     }
