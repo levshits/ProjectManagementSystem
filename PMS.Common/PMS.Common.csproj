@@ -50,10 +50,11 @@
     <Compile Include="Immutable\IssueStatusEnum.cs" />
     <Compile Include="Immutable\ObjectTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\LoginRequest.cs" />
+    <Compile Include="UserPrincipal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ListItem\" />
-    <Folder Include="Request\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

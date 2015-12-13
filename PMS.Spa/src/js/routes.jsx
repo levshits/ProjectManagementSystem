@@ -7,10 +7,10 @@ var Dashboard = require('./components/dashboard.jsx');
 var Layout = require('./components/layout.jsx');
 var AuthStore = require('./stores/authStore');
 
-var history = History.createMemoryHistory();
+var history = History.createHistory();
 
 var onEnterToPrivatePart = function(nextState, transition, callback) {
-     if (AuthStore.isAuthenticated()) {
+     if (!AuthStore.isAuthenticated()) {
          transition(null, '/login');
      }
      callback();
@@ -19,6 +19,7 @@ var onEnterToPrivatePart = function(nextState, transition, callback) {
 var routes = (
     <Router history={history}>
         <Route path='/' component={App}>
+            <IndexRoute component={Login}/>
             <Route path='/login' component={Login}/>
             <Route path='/private' onEnter={onEnterToPrivatePart} component={Layout}>
                 <IndexRoute component={Dashboard}/>

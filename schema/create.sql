@@ -22,6 +22,10 @@ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_Issue_Project]
 ALTER TABLE [Issue] DROP CONSTRAINT [FK_Issue_Project]
 ;
 
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_Issue_Sprint]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
+ALTER TABLE [Issue] DROP CONSTRAINT [FK_Issue_Sprint]
+;
+
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_MediaContent_Issue]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
 ALTER TABLE [MediaContent] DROP CONSTRAINT [FK_MediaContent_Issue]
 ;
@@ -70,6 +74,10 @@ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_Sprint_Project
 ALTER TABLE [Sprint] DROP CONSTRAINT [FK_Sprint_Project]
 ;
 
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[FK_User_Principal]') AND OBJECTPROPERTY(id, 'IsForeignKey') = 1) 
+ALTER TABLE [User] DROP CONSTRAINT [FK_User_Principal]
+;
+
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[Action]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
 DROP TABLE [Action]
 ;
@@ -92,6 +100,10 @@ DROP TABLE [Localisation]
 
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[Log]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
 DROP TABLE [Log]
+;
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[MailQueue]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
+DROP TABLE [MailQueue]
 ;
 
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[MediaContent]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
@@ -118,6 +130,10 @@ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[Project]') AND OB
 DROP TABLE [Project]
 ;
 
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[Reports]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
+DROP TABLE [Reports]
+;
+
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[Role]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
 DROP TABLE [Role]
 ;
@@ -134,8 +150,16 @@ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[RoleTypeAction]')
 DROP TABLE [RoleTypeAction]
 ;
 
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[Settings]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
+DROP TABLE [Settings]
+;
+
 IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[Sprint]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
 DROP TABLE [Sprint]
+;
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id('[User]') AND OBJECTPROPERTY(id, 'IsUserTable') = 1) 
+DROP TABLE [User]
 ;
 
 CREATE TABLE [Action]
@@ -153,7 +177,7 @@ CREATE TABLE [Activity]
 	[CreateTime] datetime NOT NULL,
 	[CreatorId] uniqueidentifier NOT NULL,
 	[IssueId] uniqueidentifier NOT NULL,
-	[OldValue] nvarchar(max) NOT NULL,
+	[OldValue] nvarchar(max),
 	[NewValue] nvarchar(max)
 )
 ;
@@ -180,7 +204,8 @@ CREATE TABLE [Issue]
 	[Priority] int NOT NULL,
 	[AssigneeId] uniqueidentifier NOT NULL,
 	[EstimatedTime] time(7),
-	[CreateTime] datetime
+	[CreateTime] datetime,
+	[SprintId] uniqueidentifier
 )
 ;
 
@@ -204,6 +229,15 @@ CREATE TABLE [Log]
 	[Identity] nvarchar(500) NOT NULL,
 	[Exception] nvarchar(max),
 	[Location] nvarchar(max)
+)
+;
+
+CREATE TABLE [MailQueue]
+(
+	[Id] uniqueidentifier NOT NULL,
+	[Email] nvarchar(300) NOT NULL,
+	[MessageText] nvarchar(max),
+	[CreateTime] datetime NOT NULL
 )
 ;
 
@@ -261,7 +295,15 @@ CREATE TABLE [Project]
 	[Description] nvarchar(3000),
 	[Version] int NOT NULL,
 	[CreateTime] datetime NOT NULL,
-	[Creator] uniqueidentifier NOT NULL
+	[CreatorId] uniqueidentifier NOT NULL
+)
+;
+
+CREATE TABLE [Reports]
+(
+	[Id] uniqueidentifier NOT NULL,
+	[CreateTime] datetime NOT NULL,
+	[ReportText] nvarchar(max) NOT NULL
 )
 ;
 
@@ -300,6 +342,14 @@ CREATE TABLE [RoleTypeAction]
 )
 ;
 
+CREATE TABLE [Settings]
+(
+	[Id] uniqueidentifier NOT NULL,
+	[Key] nvarchar(200) NOT NULL,
+	[Value] nvarchar(max) NOT NULL
+)
+;
+
 CREATE TABLE [Sprint]
 (
 	[Id] uniqueidentifier NOT NULL,
@@ -308,6 +358,14 @@ CREATE TABLE [Sprint]
 	[StartTime] datetime NOT NULL,
 	[EndTime] datetime,
 	[ProjectVersion] nvarchar(50) NOT NULL
+)
+;
+
+CREATE TABLE [User]
+(
+	[Id] uniqueidentifier NOT NULL,
+	[FirstName] nvarchar(100) NOT NULL,
+	[LastName] nvarchar(50) NOT NULL
 )
 ;
 
@@ -350,6 +408,10 @@ CREATE INDEX [IXFK_Issue_Project]
  ON [Issue] ([ProjectId] ASC)
 ;
 
+CREATE INDEX [IXFK_Issue_Sprint] 
+ ON [Issue] ([Id] ASC)
+;
+
 ALTER TABLE [Issue] 
  ADD CONSTRAINT [PK_Issue]
 	PRIMARY KEY CLUSTERED ([Id])
@@ -362,6 +424,11 @@ ALTER TABLE [Localisation]
 
 ALTER TABLE [Log] 
  ADD CONSTRAINT [PK_Log]
+	PRIMARY KEY CLUSTERED ([Id])
+;
+
+ALTER TABLE [MailQueue] 
+ ADD CONSTRAINT [PK_MailQueue]
 	PRIMARY KEY CLUSTERED ([Id])
 ;
 
@@ -411,11 +478,16 @@ ALTER TABLE [PrincipalRole]
 ;
 
 CREATE INDEX [IXFK_Project_Principal] 
- ON [Project] ([Creator] ASC)
+ ON [Project] ([CreatorId] ASC)
 ;
 
 ALTER TABLE [Project] 
  ADD CONSTRAINT [PK_Project]
+	PRIMARY KEY CLUSTERED ([Id])
+;
+
+ALTER TABLE [Reports] 
+ ADD CONSTRAINT [PK_Report]
 	PRIMARY KEY CLUSTERED ([Id])
 ;
 
@@ -459,12 +531,26 @@ ALTER TABLE [RoleTypeAction]
 	PRIMARY KEY CLUSTERED ([Id])
 ;
 
+ALTER TABLE [Settings] 
+ ADD CONSTRAINT [PK_Settings]
+	PRIMARY KEY CLUSTERED ([Id])
+;
+
 CREATE INDEX [IXFK_Sprint_Project] 
  ON [Sprint] ([ProjectId] ASC)
 ;
 
 ALTER TABLE [Sprint] 
  ADD CONSTRAINT [PK_Sprint]
+	PRIMARY KEY CLUSTERED ([Id])
+;
+
+CREATE INDEX [IXFK_User_Principal] 
+ ON [User] ([Id] ASC)
+;
+
+ALTER TABLE [User] 
+ ADD CONSTRAINT [PK_User]
 	PRIMARY KEY CLUSTERED ([Id])
 ;
 
@@ -492,6 +578,10 @@ ALTER TABLE [Issue] ADD CONSTRAINT [FK_Issue_Project]
 	FOREIGN KEY ([ProjectId]) REFERENCES [Project] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;
 
+ALTER TABLE [Issue] ADD CONSTRAINT [FK_Issue_Sprint]
+	FOREIGN KEY ([Id]) REFERENCES [Sprint] ([Id]) ON DELETE No Action ON UPDATE No Action
+;
+
 ALTER TABLE [MediaContent] ADD CONSTRAINT [FK_MediaContent_Issue]
 	FOREIGN KEY ([IssueId]) REFERENCES [Issue] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;
@@ -513,7 +603,7 @@ ALTER TABLE [PrincipalRole] ADD CONSTRAINT [FK_PrincipalRole_Role]
 ;
 
 ALTER TABLE [Project] ADD CONSTRAINT [FK_Project_Principal]
-	FOREIGN KEY ([Creator]) REFERENCES [Principal] ([Id]) ON DELETE No Action ON UPDATE No Action
+	FOREIGN KEY ([CreatorId]) REFERENCES [Principal] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;
 
 ALTER TABLE [Role] ADD CONSTRAINT [FK_Role_RoleType]
@@ -538,4 +628,8 @@ ALTER TABLE [RoleTypeAction] ADD CONSTRAINT [FK_RoleTypeAction_RoleType]
 
 ALTER TABLE [Sprint] ADD CONSTRAINT [FK_Sprint_Project]
 	FOREIGN KEY ([ProjectId]) REFERENCES [Project] ([Id]) ON DELETE No Action ON UPDATE No Action
+;
+
+ALTER TABLE [User] ADD CONSTRAINT [FK_User_Principal]
+	FOREIGN KEY ([Id]) REFERENCES [Principal] ([Id]) ON DELETE No Action ON UPDATE No Action
 ;

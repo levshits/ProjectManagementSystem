@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <!--CommandBus-->
+  <object id="CommandBusBase" type="Levshits.Data.Common.CommandBus, Levshits.Data" singleton="true"/>
+
+  <!--Transactional CommandBus-->
+  <object id="TransactionalCommandBus" type="Levshits.Data.Common.TransactionalCommandBus, Levshits.Data" singleton="true">
+    <constructor-arg name="commandBus" ref="CommandBusBase"/>
+    <constructor-arg name="dataProvider" ref="PmsDataProvider"/>
+  </object>
+
+  <!--BloBase-->
+  <object id="BloBase" type="Levshits.Logic.BloBase" init-method="Init" abstract="true">
+    <constructor-arg name="repository" ref="Repository"/>
+  </object>
+</objects>

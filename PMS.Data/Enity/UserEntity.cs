@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Levshits.Data.Entity;
-
-namespace PMS.Data.Enity
+﻿namespace PMS.Data.Enity
 {
     public class UserEntity: PrincipalEntity
     {

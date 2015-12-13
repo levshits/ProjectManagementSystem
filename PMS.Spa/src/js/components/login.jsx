@@ -1,5 +1,5 @@
 var React = require('react');
-var Bootstrap = require('react-bootstrap');
+var {Form, Input, Button} = require('react-bootstrap');
 var AuthStore = require('../stores/authStore');
 var AuthActionsCreators = require('../actions/authActionsCreators');
 
@@ -21,13 +21,16 @@ var Login = React.createClass({
     },
     render: function(){
         return(
-            <div>
-                <h1>Login page</h1>
-                <Bootstrap.Button onClick={this._onSubmit}>Login</Bootstrap.Button>
-                <form onsubmit={this._onSubmit}>
-
-                </form>
-            </div>
+            <header className="header">
+                <div className="text-vertical-center">
+                    <h1>PMS</h1>
+                    <h3>Project management system</h3>
+                    <form className="form-horizontal">
+                        <Input type="text" label="Login" labelClassName="col-xs-2" wrapperClassName="col-xs-10" />
+                        <Input type="password" label="Password" labelClassName="col-xs-2" wrapperClassName="col-xs-10" />
+                    </form>
+                </div>
+            </header>
         );
     }
 });

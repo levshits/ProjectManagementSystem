@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render(BundleConfig.STYLE_BUNDLE_BOOTSTRAP)
+    @Styles.Render(BundleConfig.STYLE_BUNDLE_PMS)
+</head>
+<body>
+
+@RenderBody()
+
+@Scripts.Render(BundleConfig.SCRIPTS_BUNDLE_JQUERY)
+@Scripts.Render(BundleConfig.SCRIPTS_BUNDLE_JQUERY_VALIDATE)
+@Scripts.Render(BundleConfig.SCRIPTS_BUNDLE_BOOTSTRAP)
+@RenderSection("scripts", required: false)
+</body>
+</html>
