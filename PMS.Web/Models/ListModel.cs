@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace PMS.Web.Models
 {
-    public class ListModel<T> where T: ListItemModel
+    public abstract class ListModel: ListItemModel
+    {
+        public PagingInfo PagingInfo { get; set; }
+    }
+    public class ListModel<T>: ListModel where T: ListItemModel
     {
         public List<T> Items { get; set; }
-        public PagingInfo PagingInfo { get; set; }
 
         public ListModel()
         {

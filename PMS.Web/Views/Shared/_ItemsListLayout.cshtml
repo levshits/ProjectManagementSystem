@@ -1,0 +1,12 @@
+﻿@model ListModel<ListItemModel>
+@using PMS.Web.HtmlHelpers
+@{
+    Layout = "_PrivateLayout.cshtml";
+}
+<div class="container">
+    @RenderBody()
+</div>
+
+@section Scripts{
+    @RenderSection("Scripts", false)
+}

@@ -1,0 +1,14 @@
+﻿@using PMS.Web.Controllers
+@using PMS.Web.HtmlHelpers
+@model UserListModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="pagination">
+    @Html.PageLinks(Model.PagingInfo, (i) => Url.Action(UserController.IndexAction, UserController.Name, new { page = i}))
+</div>

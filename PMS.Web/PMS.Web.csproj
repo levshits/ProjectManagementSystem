@@ -191,7 +191,11 @@
     <Compile Include="Models\ListItemModel.cs" />
     <Compile Include="Models\ListModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\RoleListItem.cs" />
+    <Compile Include="Models\RoleListModel.cs" />
     <Compile Include="Models\UserDetailsModel.cs" />
+    <Compile Include="Models\UserListItemModel.cs" />
+    <Compile Include="Models\UserListModel.cs" />
     <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storages\SelfCleanableStorage.cs" />
@@ -262,6 +266,9 @@
     <Content Include="Views\Auth\Index.cshtml" />
     <None Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\_PrivateLayout.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\_ItemsListLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
