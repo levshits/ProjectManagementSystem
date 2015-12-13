@@ -11,11 +11,6 @@ namespace PMS.Web.Controllers
         public const string IndexAction = "Index";
         public const string Name = "User";
 
-        [HttpGet]
-        public ActionResult Details(Guid userId)
-        {
-            var model = new UserDetailsModel();
-            return View(model);
-        }
+        
     }
 }

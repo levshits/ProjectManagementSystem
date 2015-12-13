@@ -5,13 +5,16 @@ namespace PMS.Common.Immutable
     public class Actions
     {
         public static readonly Guid CREATE_PRINCIPAL = new Guid("654D750A-3EBD-4DCB-B135-E8C385E13147");
+        public static readonly Guid VIEW_PRINCIPAL = new Guid("7FCB7D6D-E9A5-4FA9-8A33-D801DDEFFEE0");
         public static readonly Guid SAVE_PRINCIPAL = new Guid("C6DAC871-C60E-486A-895D-9141ADE25E7C");
 
         public static readonly Guid CREATE_ROLE = new Guid("8CB90CDF-324F-4D5A-AE1E-3EB489B8C524");
         public static readonly Guid SAVE_ROLE = new Guid("39DB2DBA-387C-4400-AC39-C136F8A481DF");
         public static readonly Guid REMOVE_ROLE = new Guid("EC3A247C-4F56-401A-8101-0B8407DB9347");
+        public static readonly Guid VIEW_ROLE = new Guid("8B480214-F6BC-4646-8AEE-A8AC2FF938A5");
 
         public static readonly Guid CREATE_PROJECT = new Guid("F799004B-096F-4DC3-9D15-60699D23E918");
+        public static readonly Guid VIEW_PROJECT = new Guid("A1691A4E-5AEF-4023-A8EB-95C103D2C925");
         public static readonly Guid SAVE_PROJECT = new Guid("182A68E0-9A54-4BD5-B03F-A1FDC44E5FE0");
 
         public static readonly Guid CREATE_ISSUE = new Guid("333193E7-285D-4BB5-8703-8AE44428452A");
@@ -22,6 +25,7 @@ namespace PMS.Common.Immutable
         public static readonly Guid ATTACH_CONNTENT_TO_ISSUE = new Guid("CD452935-8F5A-42D5-9644-4FB4A3D79B6A");
 
         public static readonly Guid CREATE_SPRINT = new Guid("CD452935-8F5A-42D5-9644-4FB4A3D79B6A");
-        public static readonly Guid SAVE_SPRINT = new Guid("CD452935-8F5A-42D5-9644-4FB4A3D79B6A");
+        public static readonly Guid VIEW_SPRINT = new Guid("DBE3CFBE-F5FA-40AC-A39F-964D4F7C4AB0");
+        public static readonly Guid SAVE_SPRINT = new Guid("CB2E31CC-0932-461F-85C3-BE94D9FD73CF");
     }
 }

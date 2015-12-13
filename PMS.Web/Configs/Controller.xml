@@ -16,7 +16,7 @@
   </object>
   <object id="ProjectController" type="PMS.Web.Controllers.ProjectController, PMS.Web" parent="BaseController" singleton="false">
   </object>
-  <object id="SettingController" type="PMS.Web.Controllers.SettingController, PMS.Web" parent="BaseController" singleton="false">
+  <object id="ProfileController" type="PMS.Web.Controllers.ProfileController, PMS.Web" parent="BaseController" singleton="false">
   </object>
   <object id="SprintController" type="PMS.Web.Controllers.SprintController, PMS.Web" parent="BaseController" singleton="false">
   </object>  

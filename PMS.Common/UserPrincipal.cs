@@ -8,6 +8,9 @@ namespace PMS.Common
 {
     public class UserPrincipal: GenericPrincipal
     {
+        public Guid Id { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
 
         protected UserPrincipal(IIdentity identity, string[] roles) : base(identity, roles)
         {
@@ -20,7 +23,11 @@ namespace PMS.Common
 
         public UserPrincipal(PrincipalDto typedResult): base(new GenericIdentity(typedResult.Id.ToString()), typedResult.Roles.Select(x=>x.Name).ToArray())
         {
+            Id = typedResult.Id;
+            Username = typedResult.Username;
+            Email = typedResult.Email;
             SessionId = Guid.NewGuid();
+            PermittedActions = typedResult.Actions.Select(x => x.Id).ToList();
         }
 
         /// <summary>

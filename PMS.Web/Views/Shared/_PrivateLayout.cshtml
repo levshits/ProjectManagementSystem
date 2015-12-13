@@ -1,4 +1,5 @@
 ﻿@using PMS.Common
+@using PMS.Common.Immutable
 @using PMS.Web.Controllers
 @{
     Layout = "_Layout.cshtml";
@@ -18,14 +19,26 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Projects", ProjectController.IndexAction, ProjectController.Name)</li>
+                        @if (principal.PermittedActions.Contains(Actions.VIEW_PROJECT))
+                        {
+                            <li>@Html.ActionLink("Projects", ProjectController.IndexAction, ProjectController.Name)</li>
+                        }
                         <li>@Html.ActionLink("Issues", IssueController.IndexAction, IssueController.Name)</li>
-                        <li>@Html.ActionLink("Sprints", SprintController.IndexAction, SprintController.Name)</li>
-                        <li>@Html.ActionLink("Users", UserController.IndexAction, UserController.Name)</li>
-                        <li>@Html.ActionLink("Roles", RoleController.IndexAction, RoleController.Name)</li>
-                        <li>@Html.ActionLink("Profile", UserController.DetailsAction, UserController.Name)</li>
+                        @if (principal.PermittedActions.Contains(Actions.VIEW_SPRINT))
+                        {
+                            <li>@Html.ActionLink("Sprints", SprintController.IndexAction, SprintController.Name)</li>
+                        }
+                        @if (principal.PermittedActions.Contains(Actions.VIEW_PRINCIPAL))
+                        {
+                            <li>@Html.ActionLink("Users", UserController.IndexAction, UserController.Name)</li>
+                        }
+                        @if (principal.PermittedActions.Contains(Actions.VIEW_ROLE))
+                        {
+                            <li>@Html.ActionLink("Roles", RoleController.IndexAction, RoleController.Name)</li>
+                        }
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Profile", ProfileController.IndexAction, ProfileController.Name)</li>
                         <li>@Html.ActionLink("Logout", AuthController.LogoutAction, AuthController.Name)</li>
                     </ul>
                 </div>
