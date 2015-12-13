@@ -44,10 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\PrincipalDto.cs" />
+    <Compile Include="Immutable\Actions.cs" />
+    <Compile Include="Immutable\ContentTypeEnum.cs" />
+    <Compile Include="Immutable\IssuePriorityEnum.cs" />
+    <Compile Include="Immutable\IssueStatusEnum.cs" />
+    <Compile Include="Immutable\ObjectTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Immutable\" />
     <Folder Include="ListItem\" />
     <Folder Include="Request\" />
   </ItemGroup>
