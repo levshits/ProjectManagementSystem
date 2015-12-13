@@ -25,6 +25,17 @@ namespace PMS.Logic.Blo
         public override void Init()
         {
             RegisterCommand<LoginRequest>(LoginRequestHandler);
+            RegisterCommand<GetEntityDtoByIdRequest>(GetEntityByIdRequestHandler);
+        }
+
+        private ExecutionResult GetEntityByIdRequestHandler(GetEntityDtoByIdRequest request, ExecutionContext context)
+        {
+            var entity = PmsRepository.PrincipalData.GetEntityById(request.EntityId);
+            PrincipalDto dto = Mapper.Map<PrincipalDto>(entity);
+            dto.Roles = entity.RoleEntities.Select(x => Mapper.Map<RoleDto>(x)).ToList();
+            IList<ActionEntity> actions = entity.RoleEntities.SelectMany(x => x.ActionEntities).ToList();
+            dto.Actions = actions.Select(x => Mapper.Map<ActionDto>(x)).ToList();
+            return new ExecutionResult <PrincipalDto> { TypedResult = dto};
         }
 
         public PmsRepository PmsRepository => (PmsRepository) Repository;

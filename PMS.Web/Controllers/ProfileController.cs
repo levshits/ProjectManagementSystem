@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Web.Mvc;
+using AutoMapper;
+using Levshits.Data.Common;
+using PMS.Common;
+using PMS.Common.Dto;
+using PMS.Common.Request;
 using PMS.Web.Models;
 
 namespace PMS.Web.Controllers
@@ -11,10 +16,18 @@ namespace PMS.Web.Controllers
 
 
         [HttpGet]
-        public ActionResult Index()
+        public override ActionResult Index()
         {
-            var model = new UserDetailsModel();
-            return View(model);
+            UserPrincipal principal = UserPrincipal.CurrentUser;
+            ExecutionResult<PrincipalDto> result =
+                CommandBus.ExecuteCommand(new GetEntityDtoByIdRequest() {EntityId = principal.Id}) as ExecutionResult<PrincipalDto>;
+            if (result != null && result.Success && result.TypedResult != null)
+            {
+                var model = Mapper.Map<UserDetailsModel>(result.TypedResult);
+                return View(model);
+            }
+            ModelState.AddModelError(String.Empty, "Error during processing request");
+            return RedirectToAction(DashboardController.IndexAction, DashboardController.IndexAction);
         }
     }
 }

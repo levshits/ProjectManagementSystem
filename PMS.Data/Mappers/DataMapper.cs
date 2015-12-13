@@ -11,6 +11,9 @@ namespace PMS.Data.Mappers
             Mapper.CreateMap<PrincipalEntity, PrincipalDto>();
             Mapper.CreateMap<PrincipalDto, PrincipalEntity>();
 
+            Mapper.CreateMap<PrincipalExtendedEntity, PrincipalDto>();
+            Mapper.CreateMap<PrincipalDto, PrincipalExtendedEntity>();
+
             Mapper.CreateMap<RoleEntity, RoleDto>();
             Mapper.CreateMap<RoleDto, RoleEntity>();
 
