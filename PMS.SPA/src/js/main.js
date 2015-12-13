@@ -1,18 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Router, Route, IndexRoute } from 'react-router'
-import { createHistory, useBasename } from 'history'
-import App from './components/app';
-import Home from './components/home';
-import Dashboard from './components/dashboard';
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Routes = require('./routes.jsx');
 
-const history = useBasename(createHistory)({
-    basename: '/'
-});
-const routes =
-    <Route path="/" component={App}>
-        <IndexRoute component={Home}/>
-        <Route path="/home" component={Home}/>
-        <Route path="/dashboard" component={Dashboard}/>
-    </Route>;
-ReactDOM.render(<Router history={history} routes={routes}/>, document.getElementById('app'));
+ReactDOM.render(Routes, document.getElementById('app'));
