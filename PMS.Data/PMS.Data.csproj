@@ -76,6 +76,7 @@
     <Compile Include="Enity\LocalisationEntity.cs" />
     <Compile Include="Enity\MediaContentEntity.cs" />
     <Compile Include="Enity\ObjectTypeEntity.cs" />
+    <Compile Include="Enity\UserEntity.cs" />
     <Compile Include="Enity\PrincipalEntity.cs" />
     <Compile Include="Enity\PrincipalProjectEntity.cs" />
     <Compile Include="Enity\PrincipalRoleEntity.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="EntityMap\CommentEntityMap.cs" />
     <Compile Include="EntityMap\ActivityEntityMap.cs" />
     <Compile Include="EntityMap\ActionEntityMap.cs" />
+    <Compile Include="EntityMap\UserEntityMap.cs" />
     <Compile Include="EntityMap\PrincipalRoleEntityMap.cs" />
     <Compile Include="EntityMap\PrincipalProjectEntityMap.cs" />
     <Compile Include="EntityMap\RoleActionEntityMap.cs" />
