@@ -4,17 +4,16 @@ using PMS.Data.Enity;
 
 namespace PMS.Data.EntityMap
 {
-    public class UserEntityMap: SubclassMap<UserEntity>
+    public class PrincipalExtendedEntityMap: SubclassMap<PrincipalExtendedEntity>
     {
-        public UserEntityMap()
+        public PrincipalExtendedEntityMap()
         {
-            Table("User");
+            Table("PrincipalExtended");
 
             KeyColumn(nameof(BaseEntity.Id));
 
             Map(x => x.FirstName);
             Map(x => x.LastName);
-            Map(x => x.Avatar);
         }
     }
 }

@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_Layout.cshtml";
+}
+<header class="header">
+    <div class="text-vertical-center">
+        @RenderBody()
+    </div>
+</header>
+
+@section Scripts{
+    @RenderSection("Scripts", false)
+}

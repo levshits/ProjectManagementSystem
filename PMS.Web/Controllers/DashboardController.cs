@@ -1,0 +1,19 @@
+﻿using System.Web.Mvc;
+using Levshits.Web.Common.Controllers;
+using PMS.Web.Models;
+
+namespace PMS.Web.Controllers
+{
+    [Authorize]
+    public class DashboardController: BaseController
+    {
+        public const string IndexAction = "Index";
+        public const string Name = "Dashboard";
+
+        public override ActionResult Index()
+        {
+            var model = new DashboardModel();
+            return View(model);
+        }
+    }
+}

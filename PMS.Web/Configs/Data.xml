@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net">
-  <object id="DataMapper" type="PMS.Data.Mapper.DataMapper, PMS.Data" singleton="true"/>
+  <object id="DataMapper" type="PMS.Data.Mappers.DataMapper, PMS.Data" singleton="true"/>
 
   <!--Sesion storage-->
   <object id="HttpSessionStorage" type="Levshits.Data.Storage.HttpSessionStorage, Levshits.Data" singleton="true"/>

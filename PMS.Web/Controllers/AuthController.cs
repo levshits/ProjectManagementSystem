@@ -1,8 +1,11 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Levshits.Data.Common;
 using Levshits.Web.Common.Controllers;
 using PMS.Common;
+using PMS.Common.Dto;
+using PMS.Common.Request;
 using PMS.Web.Models;
 using PMS.Web.Storages;
 
@@ -12,6 +15,8 @@ namespace PMS.Web.Controllers
     {
         public SelfCleanableStorage SelfCleanableStorage { get; set; }
         public const string IndexAction = "Index";
+        public const string LoginAction = "Login";
+        public const string Name = "Auth";
 
         public override ActionResult Index()
         {
@@ -24,7 +29,17 @@ namespace PMS.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                ExecutionResult<PrincipalDto> result = (ExecutionResult<PrincipalDto>) CommandBus.ExecuteCommand(new LoginRequest()
+                {
+                    Username = model.Username, Password = model.Password
+                });
+                if (result.Success)
+                {
+                    UserPrincipal.CurrentUser = new UserPrincipal(result.TypedResult);
+                    PrepareCookieForCurrentPrincipal(HttpContext);
+                    return RedirectToAction(DashboardController.IndexAction, DashboardController.Name);
+                }
+                ModelState.AddModelError(string.Empty, "Please check entered login and username");
             }
             return View(IndexAction, model);
         }

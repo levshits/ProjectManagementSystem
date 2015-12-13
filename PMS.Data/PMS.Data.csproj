@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
       <Private>True</Private>
@@ -76,7 +80,7 @@
     <Compile Include="Enity\LocalisationEntity.cs" />
     <Compile Include="Enity\MediaContentEntity.cs" />
     <Compile Include="Enity\ObjectTypeEntity.cs" />
-    <Compile Include="Enity\UserEntity.cs" />
+    <Compile Include="Enity\PrincipalExtendedEntity.cs" />
     <Compile Include="Enity\PrincipalEntity.cs" />
     <Compile Include="Enity\PrincipalProjectEntity.cs" />
     <Compile Include="Enity\PrincipalRoleEntity.cs" />
@@ -92,7 +96,7 @@
     <Compile Include="EntityMap\CommentEntityMap.cs" />
     <Compile Include="EntityMap\ActivityEntityMap.cs" />
     <Compile Include="EntityMap\ActionEntityMap.cs" />
-    <Compile Include="EntityMap\UserEntityMap.cs" />
+    <Compile Include="EntityMap\PrincipalExtendedEntityMap.cs" />
     <Compile Include="EntityMap\PrincipalRoleEntityMap.cs" />
     <Compile Include="EntityMap\PrincipalProjectEntityMap.cs" />
     <Compile Include="EntityMap\RoleActionEntityMap.cs" />
@@ -103,11 +107,16 @@
     <Compile Include="EntityMap\SprintEntityMap.cs" />
     <Compile Include="EntityMap\PrincipalEntityMap.cs" />
     <Compile Include="EntityMap\ObjectTypeEntityMap.cs" />
-    <Compile Include="Mapper\DataMapper.cs" />
+    <Compile Include="Mappers\DataMapper.cs" />
     <Compile Include="PMSDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PMS.Common\PMS.Common.csproj">
+      <Project>{ba8e4198-7b2c-48be-8801-85a4bb4bd1b4}</Project>
+      <Name>PMS.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

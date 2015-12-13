@@ -3,7 +3,8 @@
   <object id="BaseController" type="Levshits.Web.Common.Controllers.BaseController" abstract="true">
     <property name="CommandBus" ref="TransactionalCommandBus"/>
   </object>
-  <object id="HomeController" type="PMS.Web.Controllers.HomeController, PMS.Web" parent="BaseController" singleton="false">
+  
+  <object id="DashboardController" type="PMS.Web.Controllers.DashboardController, PMS.Web" parent="BaseController" singleton="false">
   </object>
   
   <object id="AuthController" type="PMS.Web.Controllers.AuthController, PMS.Web" parent="BaseController" singleton="false">

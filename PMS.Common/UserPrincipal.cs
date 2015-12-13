@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
+using PMS.Common.Dto;
 
 namespace PMS.Common
 {
     public class UserPrincipal: GenericPrincipal
     {
-        public UserPrincipal(IIdentity identity, string[] roles) : base(identity, roles)
+
+        protected UserPrincipal(IIdentity identity, string[] roles) : base(identity, roles)
         {
         }
 
-        public UserPrincipal(): base(new GenericIdentity(string.Empty), new string[0])
+        protected UserPrincipal(): base(new GenericIdentity(string.Empty), new string[0])
         {
             SessionId = Guid.Empty;
+        }
+
+        public UserPrincipal(PrincipalDto typedResult): base(new GenericIdentity(typedResult.Id.ToString()), typedResult.Roles.Select(x=>x.Name).ToArray())
+        {
+            SessionId = Guid.NewGuid();
         }
 
         /// <summary>

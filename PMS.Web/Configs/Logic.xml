@@ -10,7 +10,11 @@
   </object>
 
   <!--BloBase-->
-  <object id="BloBase" type="Levshits.Logic.BloBase" init-method="Init" abstract="true">
+  <object id="BloBase" type="Levshits.Data.BloBase" init-method="Init" abstract="true">
     <constructor-arg name="repository" ref="Repository"/>
+  </object>
+
+  <!--BloBase-->
+  <object id="PrincipalBlo" type="PMS.Logic.Blo.PrincipalBlo" parent="BloBase" init-method="Init">
   </object>
 </objects>
