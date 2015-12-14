@@ -114,7 +114,7 @@ namespace PMS.Web.Controllers
                 {
                     PrincipalDto dto = Mapper.Map<PrincipalDto>(model);
                     dto.CreateTime = DateTime.Now;
-                    dto.RolesEntities = model.SelectedRolesIds.Select(x => new RoleDto() { Id = x }).ToList();
+                    dto.RoleEntities = model.SelectedRolesIds.Select(x => new RoleDto() { Id = x }).ToList();
                     dto.ProjectEntities = model.SelectedProjectsIds.Select(x => new ProjectDto() { Id = x }).ToList();
                     var result = CommandBus.ExecuteCommand(new PrincipalSaveRequest() { Dto = dto });
                     if (result.Success)
@@ -143,7 +143,7 @@ namespace PMS.Web.Controllers
             {
                 PrincipalDto dto = Mapper.Map<PrincipalDto>(model);
                 dto.CreateTime = DateTime.Now;
-                dto.RolesEntities = model.SelectedRolesIds.Select(x => new RoleDto() { Id = x }).ToList();
+                dto.RoleEntities = model.SelectedRolesIds.Select(x => new RoleDto() { Id = x }).ToList();
                 dto.ProjectEntities = model.SelectedProjectsIds.Select(x => new ProjectDto() { Id = x }).ToList();
                 var result = CommandBus.ExecuteCommand(new PrincipalSaveRequest() { Dto = dto });
                 if (result.Success)

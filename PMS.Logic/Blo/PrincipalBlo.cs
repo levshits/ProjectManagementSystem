@@ -57,38 +57,44 @@ namespace PMS.Logic.Blo
             {
                 entity = Mapper.Map<PrincipalExtendedEntity>(request.Dto);
                 entity.Password = PreparePassword(entity.Password);
-                entity.ActionEntities.Clear();
+                entity.CreateTime = DateTime.Now;
+                entity.RoleEntities.Clear();
+                entity.ProjectEntities.Clear();
                 var id = PmsRepository.PrincipalData.Save(entity);
                 entity = (PrincipalExtendedEntity) PmsRepository.PrincipalData.GetEntityById(id);
             }
-            entity = (PrincipalExtendedEntity) (entity ?? PmsRepository.PrincipalData.GetEntityById(dto.Id));
-            entity.Username = dto.Username;
-            entity.Email = dto.Email;
-            entity.FirstName = dto.FirstName;
-            entity.LastName = dto.LastName;
+            else
+            {
+                entity = (PrincipalExtendedEntity) (PmsRepository.PrincipalData.GetEntityById(dto.Id));
+                entity.Username = dto.Username ?? entity.Username;
+                entity.Email = dto.Email;
+                entity.FirstName = dto.FirstName;
+                entity.LastName = dto.LastName;
+            }
 
             var availbleRoles = entity.RoleEntities.Select(x => x.Id).ToList();
-            foreach (var roleEntity in dto.RolesEntities)
+            foreach (var roleEntity in dto.RoleEntities)
             {
                 if (!availbleRoles.Contains(roleEntity.Id))
                 {
                     entity.PrincipalRoleEntities.Add(new PrincipalRoleEntity() { PrincipalId = entity.Id, RoleId = roleEntity.Id, CreateTime = DateTime.Now});
                 }
             }
-            var removedRoles = entity.PrincipalRoleEntities.Where(roleActionEntity => dto.RolesEntities.All(x => x.Id != roleActionEntity.RoleId)).ToList();
-            foreach (var principalRoleEntity in removedRoles)
-            {
-                entity.PrincipalRoleEntities.Remove(principalRoleEntity);
-            }
-
             var availbleProjects = entity.ProjectEntities.Select(x => x.Id).ToList();
             foreach (var projectEntity in dto.ProjectEntities)
             {
                 if (!availbleProjects.Contains(projectEntity.Id))
                 {
-                    entity.PrincipalProjectEntities.Add(new PrincipalProjectEntity() { PrincipalId = entity.Id, ProjectId = projectEntity.Id, CreateTime = DateTime.Now});
+                    entity.PrincipalProjectEntities.Add(new PrincipalProjectEntity() { PrincipalId = entity.Id, ProjectId = projectEntity.Id, CreateTime = DateTime.Now });
                 }
             }
+
+            var removedRoles = entity.PrincipalRoleEntities.Where(roleActionEntity => dto.RoleEntities.All(x => x.Id != roleActionEntity.RoleId)).ToList();
+            foreach (var principalRoleEntity in removedRoles)
+            {
+                entity.PrincipalRoleEntities.Remove(principalRoleEntity);
+            }
+
             var removedProjects = entity.PrincipalProjectEntities.Where(principalProjectEntity => dto.ProjectEntities.All(x => x.Id != principalProjectEntity.ProjectId)).ToList();
             foreach (var principalProjectEntity in removedProjects)
             {
@@ -116,7 +122,7 @@ namespace PMS.Logic.Blo
             var password = PreparePassword(request.Password);
             PrincipalEntity entity = PmsRepository.PrincipalData.GetUserByUsernameAndPassword(request.Username, password);
             PrincipalDto dto = Mapper.Map<PrincipalDto>(entity);
-            dto.RolesEntities = entity.RoleEntities.Select(x => Mapper.Map<RoleDto>(x)).ToList();
+            dto.RoleEntities = entity.RoleEntities.Select(x => Mapper.Map<RoleDto>(x)).ToList();
             IList<ActionEntity> actions = entity.RoleEntities.SelectMany(x => x.ActionEntities).ToList();
             dto.Actions = actions.Select(x => Mapper.Map<ActionDto>(x)).ToList();
             return new ExecutionResult<PrincipalDto> {TypedResult = dto};

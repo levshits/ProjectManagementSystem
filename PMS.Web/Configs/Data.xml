@@ -62,6 +62,18 @@
   <!--RoleTypeData-->
   <object id="RoleTypeData" type="PMS.Data.Data.RoleTypeData, PMS.Data" parent="BaseData">
   </object>
+  
+  <!--RoleActionData-->
+  <object id="RoleActionData" type="PMS.Data.Data.RoleActionData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--PrincipalRoleData-->
+  <object id="PrincipalRoleData" type="PMS.Data.Data.PrincipalRoleData, PMS.Data" parent="BaseData">
+  </object>
+  
+  <!--PrincipalProjectData-->
+  <object id="PrincipalProjectData" type="PMS.Data.Data.PrincipalProjectData, PMS.Data" parent="BaseData">
+  </object>
 
   <!--Repository-->
   <object id="Repository" type="PMS.Data.Common.PmsRepository" singleton="true">
@@ -76,5 +88,8 @@
     <property name="RoleData" ref="RoleData"/>
     <property name="SprintData" ref="SprintData"/>
     <property name="RoleTypeData" ref="RoleTypeData"/>
+    <property name="RoleActionData" ref="RoleActionData"/>
+    <property name="PrincipalRoleData" ref="PrincipalRoleData"/>
+    <property name="PrincipalProjectData" ref="PrincipalProjectData"/>
   </object>
 </objects>

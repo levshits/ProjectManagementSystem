@@ -21,7 +21,7 @@ namespace PMS.Common
             SessionId = Guid.Empty;
         }
 
-        public UserPrincipal(PrincipalDto typedResult): base(new GenericIdentity(typedResult.Id.ToString()), typedResult.RolesEntities.Select(x=>x.Name).ToArray())
+        public UserPrincipal(PrincipalDto typedResult): base(new GenericIdentity(typedResult.Id.ToString()), typedResult.RoleEntities.Select(x=>x.Name).ToArray())
         {
             Id = typedResult.Id;
             Username = typedResult.Username;

@@ -100,14 +100,13 @@ namespace PMS.Logic.Blo
                     entity.RoleActionEntities.Add(new RoleActionEntity() {ActionId = actionEntity.Id, RoleId = entity.Id});
                 }
             }
-
-            var removedRoles = entity.RoleActionEntities.Where(roleActionEntity => dto.ActionEntities.All(x => x.Id != roleActionEntity.RoleId)).ToList();
+            
+            var removedRoles = entity.RoleActionEntities.Where(roleActionEntity => dto.ActionEntities.All(x => x.Id != roleActionEntity.ActionId)).ToList();
             foreach (var principalRoleEntity in removedRoles)
             {
                 entity.RoleActionEntities.Remove(principalRoleEntity);
             }
             PmsRepository.RoleData.Save(entity);
-
             return new ExecutionResult();
         }
 

@@ -21,7 +21,7 @@ namespace PMS.Data.EntityMap
             References(x => x.RoleTypeIdObject).Column(nameof(RoleEntity.RoleTypeId)).ReadOnly();
             References(x => x.CreatorIdObject).Column(nameof(RoleEntity.CreatorId)).ReadOnly();
 
-            HasMany(x => x.RoleActionEntities).Cascade.AllDeleteOrphan();
+            HasMany(x => x.RoleActionEntities).Cascade.AllDeleteOrphan().Inverse();
 
             HasManyToMany(x => x.ActionEntities).Cascade.AllDeleteOrphan().Table("RoleAction")
                 .ParentKeyColumn(nameof(RoleActionEntity.RoleId))
