@@ -49,7 +49,7 @@ namespace PMS.Web.Controllers
             if (result != null && result.Success)
             {
                 UserDetailsModel model = Mapper.Map<UserDetailsModel>(result.TypedResult);
-                model.SelectedRolesIds = model.RolesEntities.Select(x => x.Id).ToArray();
+                model.SelectedRolesIds = model.RoleEntities.Select(x => x.Id).ToArray();
                 model.SelectedProjectsIds = model.ProjectEntities.Select(x => x.Id).ToArray();
                 InitialiseModel(model);
                 return View(model);

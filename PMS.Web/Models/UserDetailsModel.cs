@@ -20,7 +20,7 @@ namespace PMS.Web.Models
         [Localised()]
         public string Email { get; set; }
 
-        public IList<RoleDto> RolesEntities { get; set; }
+        public IList<RoleDto> RoleEntities { get; set; }
         public IList<ProjectDto> ProjectEntities { get; set; }
         public List<LookupItem> AvailableRoles { get; set; }
         public List<LookupItem> SelectedRoles { get; set; }
@@ -38,7 +38,7 @@ namespace PMS.Web.Models
             AvailableProjects = new List<LookupItem>();
             SelectedProjects = new List<LookupItem>();
             SelectedProjectsIds = new Guid[0];
-            RolesEntities = new List<RoleDto>();
+            RoleEntities = new List<RoleDto>();
             ProjectEntities = new List<ProjectDto>();
 
         }
