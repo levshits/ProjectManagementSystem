@@ -15,8 +15,10 @@ namespace PMS.Data.EntityMap
             Map(x => x.Name);
             Map(x => x.CreateTime);
             Map(x => x.CreatorId);
+            Map(x => x.RoleTypeId);
             Map(x => x.Description);
 
+            References(x => x.RoleTypeIdObject).Column(nameof(RoleEntity.RoleTypeId)).ReadOnly();
             References(x => x.CreatorIdObject).Column(nameof(RoleEntity.CreatorId)).ReadOnly();
 
             HasManyToMany(x => x.ActionEntities).Cascade.All().Table("RoleAction")

@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Dto\ActionDto.cs" />
     <Compile Include="Dto\PrincipalDto.cs" />
+    <Compile Include="Dto\ProjectDto.cs" />
     <Compile Include="Dto\RoleDto.cs" />
+    <Compile Include="Dto\RoleTypeDto.cs" />
     <Compile Include="Immutable\Actions.cs" />
     <Compile Include="Immutable\ContentTypeEnum.cs" />
     <Compile Include="Immutable\IssuePriorityEnum.cs" />

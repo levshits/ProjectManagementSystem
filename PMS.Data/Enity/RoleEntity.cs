@@ -8,6 +8,8 @@ namespace PMS.Data.Enity
     {
         public virtual string Name { get; set; }
         public virtual string Description { get; set; }
+        public virtual Guid RoleTypeId { get; set; }
+        public virtual RoleTypeEntity RoleTypeIdObject { get; set; }
         public virtual Guid CreatorId { get; set; }
         public virtual PrincipalEntity CreatorIdObject { get; set; }
         public virtual DateTime CreateTime { get; set; }
