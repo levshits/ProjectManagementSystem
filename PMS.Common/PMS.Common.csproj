@@ -47,6 +47,7 @@
     <Compile Include="Dto\CommentDto.cs" />
     <Compile Include="Dto\IssueDto.cs" />
     <Compile Include="Dto\IssueHistoryItemDto.cs" />
+    <Compile Include="Dto\ListResultDto.cs" />
     <Compile Include="Dto\PrincipalDto.cs" />
     <Compile Include="Dto\ProjectDto.cs" />
     <Compile Include="Dto\RoleDto.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Immutable\ObjectTypes.cs" />
     <Compile Include="Immutable\PriorityLevels.cs" />
     <Compile Include="Immutable\RoleTypes.cs" />
+    <Compile Include="ListItem\ActivityListItem.cs" />
     <Compile Include="ListItem\CommentListItem.cs" />
     <Compile Include="ListItem\IssueListItem.cs" />
     <Compile Include="ListItem\MediaContentListItem.cs" />

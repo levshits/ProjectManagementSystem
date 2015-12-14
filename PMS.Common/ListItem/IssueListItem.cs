@@ -11,7 +11,9 @@ namespace PMS.Common.ListItem
         public int Status { get; set; }
         public int Priority { get; set; }
         public Guid AssigneeId { get; set; }
-        public PrincipalDto AssigneeIdObject { get; set; }
+        public string AssigneeName { get; set; }
+        public Guid ProjectId { get; set; }
+        public string ProjectName { get; set; }
         public DateTime CreateTime { get; set; }
     }
 }

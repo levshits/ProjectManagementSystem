@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Levshits.Data;
+using Levshits.Data.Common;
 using Levshits.Data.Data;
+using NHibernate.Criterion;
+using NHibernate.Transform;
+using PMS.Common.ListItem;
 using PMS.Data.Enity;
 
 namespace PMS.Data.Data
@@ -11,6 +15,29 @@ namespace PMS.Data.Data
     {
         public RoleData(DataProvider dataProvider) : base(dataProvider)
         {
+        }
+
+        public IList<RoleListItem> GetList(int page, string searchString, out int itemsCount)
+        {
+            RoleEntity entity = null;
+            RoleListItem listItem = null;
+            var query = DataProvider.QueryOver(() => entity);
+
+            var projections = Projections.ProjectionList();
+            projections.Add(Projections.Property(() => entity.Id).WithAlias(() => listItem.Id));
+            projections.Add(Projections.Property(() => entity.Name).WithAlias(() => listItem.Name));
+            projections.Add(Projections.Property(() => entity.RoleTypeId).WithAlias(() => listItem.RoleTypeId));
+
+            var pagingOptions = new PagingOptions {ItemsPerPage = 10, Page = page};
+
+            AddPaging(query, pagingOptions);
+
+            query.Select(projections);
+            var result =
+                query.TransformUsing(Transformers.AliasToBean<RoleListItem>())
+                    .List<RoleListItem>();
+            itemsCount = pagingOptions.ItemsCount;
+            return result;
         }
     }
 }

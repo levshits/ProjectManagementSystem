@@ -11,11 +11,9 @@ namespace PMS.Data.Common
         public IssueData IssueData { get; set; }
         public LocalisationData LocalisationData { get; set; }
         public MediaContentData MediaContentData { get; set; }
-        public ObjectTypeData ObjectTypeData { get; set; }
         public PrincipalData PrincipalData { get; set; }
         public ProjectData ProjectData { get; set; }
         public RoleData RoleData { get; set; }
-        public RoleTypeData RoleTypeData { get; set; }
         public SprintData SprintData { get; set; }
     }
 }

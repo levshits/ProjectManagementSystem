@@ -11,6 +11,8 @@ namespace PMS.Data.Enity
         public virtual int Type { get; set; }
         public virtual Guid ProjectId { get; set; }
         public virtual ProjectEntity ProjectIdObject { get; set; }
+        public virtual Guid SprintId { get; set; }
+        public virtual ProjectEntity SprintIdObject { get; set; }
         public virtual int Status { get; set; }
         public virtual int Priority { get; set; }
         public virtual Guid AssigneeId { get; set; }
