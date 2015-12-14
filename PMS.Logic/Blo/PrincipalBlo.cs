@@ -27,16 +27,16 @@ namespace PMS.Logic.Blo
         {
             RegisterCommand<LoginRequest>(LoginRequestHandler);
             RegisterCommand<GetEntityDtoByIdRequest<PrincipalDto>>(GetEntityByIdRequestHandler);
-            RegisterCommand<SaveRequest<PrincipalDto>>(SavePrincipalRequestHandler);
-            RegisterCommand<ListRequest<PrincipalListItem>>(ListRequestHandler);
+            RegisterCommand<PrincipalSaveRequest>(SavePrincipalRequestHandler);
+            RegisterCommand<PrincipalListRequest>(ListRequestHandler);
         }
 
-        private ExecutionResult ListRequestHandler(ListRequest<PrincipalListItem> request, ExecutionContext context)
+        private ExecutionResult ListRequestHandler(PrincipalListRequest request, ExecutionContext context)
         {
             throw new NotImplementedException();
         }
 
-        private ExecutionResult SavePrincipalRequestHandler(SaveRequest<PrincipalDto> request, ExecutionContext context)
+        private ExecutionResult SavePrincipalRequestHandler(PrincipalSaveRequest request, ExecutionContext context)
         {
             if (request == null)
             {

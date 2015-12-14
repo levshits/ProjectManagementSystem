@@ -21,4 +21,32 @@
   <!--LocalisationBlo-->
   <object id="LocalisationBlo" type="PMS.Logic.Blo.LocalisationBlo" parent="BloBase" init-method="Init">
   </object>
+
+  <!--RoleBlo-->
+  <object id="RoleBlo" type="PMS.Logic.Blo.RoleBlo" parent="BloBase" init-method="Init">
+  </object>
+
+  <!--IssueBlo-->
+  <object id="IssueBlo" type="PMS.Logic.Blo.IssueBlo" parent="BloBase" init-method="Init">
+  </object>
+
+  <!--ActivityBlo-->
+  <object id="ActivityBlo" type="PMS.Logic.Blo.ActivityBlo" parent="BloBase" init-method="Init">
+  </object>
+
+  <!--MediaContentBlo-->
+  <object id="MediaContentBlo" type="PMS.Logic.Blo.MediaContentBlo" parent="BloBase" init-method="Init">
+  </object>
+
+  <!--ProjectBlo-->
+  <object id="ProjectBlo" type="PMS.Logic.Blo.ProjectBlo" parent="BloBase" init-method="Init">
+  </object>
+
+  <!--RoleTypeBlo-->
+  <object id="RoleTypeBlo" type="PMS.Logic.Blo.RoleTypeBlo" parent="BloBase" init-method="Init">
+  </object>
+  
+  <!--ActionBlo-->
+  <object id="ActionBlo" type="PMS.Logic.Blo.ActionBlo" parent="BloBase" init-method="Init">
+  </object>
 </objects>

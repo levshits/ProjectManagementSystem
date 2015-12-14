@@ -14,7 +14,7 @@ namespace PMS.Data.EntityMap
             Map(x => x.RoleTypeId);
             Map(x => x.ActionId);
 
-            References(x => x.ActionIdObject).Column(nameof(RoleTypeActionEntity.ActionIdObject)).ReadOnly();
+            References(x => x.ActionIdObject).Column(nameof(RoleTypeActionEntity.ActionId)).ReadOnly();
             References(x => x.RoleTypeIdObject).Column(nameof(RoleTypeActionEntity.RoleTypeId)).ReadOnly();
         }
     }

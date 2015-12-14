@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 using Levshits.Data;
 using Levshits.Data.Common;
@@ -21,11 +23,34 @@ namespace PMS.Logic.Blo
 
         public override void Init()
         {
-            RegisterCommand<SaveRequest<RoleDto>>(SaveRequestHandler);
-            RegisterCommand<ListRequest<RoleListItem>>(ListRequestHandler);
+            RegisterCommand<RoleSaveRequest>(SaveRequestHandler);
+            RegisterCommand<RoleListRequest>(ListRequestHandler);
+            RegisterCommand<RoleRemoveRequest>(RoleRemoveRequestHandler);
+            RegisterCommand<GetRoleEntityRequest>(GetEntityByIdRequestHandler);
         }
 
-        private ExecutionResult ListRequestHandler(ListRequest<RoleListItem> request, ExecutionContext context)
+        private ExecutionResult GetEntityByIdRequestHandler(GetRoleEntityRequest request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            var entity = PmsRepository.RoleData.GetEntityById(request.EntityId);
+            RoleDto dto = Mapper.Map<RoleDto>(entity);
+            return new ExecutionResult<RoleDto> {TypedResult = dto};
+        }
+
+        private ExecutionResult RoleRemoveRequestHandler(RoleRemoveRequest request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            PmsRepository.RoleData.Delete(request.RoleId);
+            return new ExecutionResult();
+        }
+
+        private ExecutionResult ListRequestHandler(RoleListRequest request, ExecutionContext context)
         {
             if (request == null)
             {
@@ -39,14 +64,40 @@ namespace PMS.Logic.Blo
             };
         }
 
-        private ExecutionResult SaveRequestHandler(SaveRequest<RoleDto> request, ExecutionContext context)
+        private ExecutionResult SaveRequestHandler(RoleSaveRequest request, ExecutionContext context)
         {
             if (request == null || request.Dto == null)
             {
                 return null;
             }
-            var entity = Mapper.Map<RoleEntity>(request.Dto);
+            var dto = request.Dto;
+            RoleEntity entity = null; 
+            if (request.Dto.Id == Guid.Empty)
+            {
+                entity = Mapper.Map<RoleEntity>(request.Dto);
+                entity.ActionEntities.Clear();
+                var id = PmsRepository.RoleData.Save(entity);
+                entity = PmsRepository.RoleData.GetEntityById(id);
+            }
+            entity = entity ?? PmsRepository.RoleData.GetEntityById(dto.Id);
+            entity.Name = dto.Name;
+            entity.Description = dto.Description;
+            var availbleActions = entity.ActionEntities.Select(x => x.Id).ToList();
+            foreach (var actionEntity in dto.ActionEntities)
+            {
+                if (!availbleActions.Contains(actionEntity.Id))
+                {
+                    entity.RoleActionEntities.Add(new RoleActionEntity() {ActionId = actionEntity.Id, RoleId = entity.Id});
+                }
+            }
+            foreach (var roleActionEntity in entity.RoleActionEntities)
+            {
 
+                if (dto.ActionEntities.All(x => x.Id != roleActionEntity.ActionId))
+                {
+                    entity.RoleActionEntities.Remove(roleActionEntity);
+                }
+            }
             PmsRepository.RoleData.Save(entity);
 
             return new ExecutionResult();

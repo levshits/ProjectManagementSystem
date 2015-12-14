@@ -21,6 +21,9 @@ namespace PMS.Data.Mappers
             Mapper.CreateMap<RoleEntity, RoleDto>();
             Mapper.CreateMap<RoleDto, RoleEntity>();
 
+            Mapper.CreateMap<RoleTypeEntity, RoleTypeDto>();
+            Mapper.CreateMap<RoleTypeDto, RoleTypeEntity>();
+
             Mapper.CreateMap<RoleEntity, RoleListItem>();
             Mapper.CreateMap<RoleListItem, RoleEntity>();
 

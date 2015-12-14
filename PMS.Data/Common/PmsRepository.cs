@@ -15,5 +15,6 @@ namespace PMS.Data.Common
         public ProjectData ProjectData { get; set; }
         public RoleData RoleData { get; set; }
         public SprintData SprintData { get; set; }
+        public RoleTypeData RoleTypeData { get; set; }
     }
 }

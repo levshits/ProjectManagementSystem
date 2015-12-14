@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <objects xmlns="http://www.springframework.net">
-  <object id="DataMapper" type="PMS.Data.Mappers.DataMapper, PMS.Data" singleton="true"/>
+  <object id="ModelDataMapper" type="PMS.Data.Mappers.DataMapper, PMS.Data" singleton="true"/>
 
   <!--Sesion storage-->
   <object id="HttpSessionStorage" type="Levshits.Data.Storage.HttpSessionStorage, Levshits.Data" singleton="true"/>
@@ -43,10 +43,6 @@
   <object id="MediaContentData" type="PMS.Data.Data.MediaContentData, PMS.Data" parent="BaseData">
   </object>
   
-  <!--ObjectTypeData-->
-  <object id="ObjectTypeData" type="PMS.Data.Data.ObjectTypeData, PMS.Data" parent="BaseData">
-  </object>
-  
   <!--PrincipalData-->
   <object id="PrincipalData" type="PMS.Data.Data.PrincipalData, PMS.Data" parent="BaseData">
   </object>
@@ -58,13 +54,13 @@
   <!--RoleData-->
   <object id="RoleData" type="PMS.Data.Data.RoleData, PMS.Data" parent="BaseData">
   </object> 
+ 
+  <!--RoleTypeData-->
+  <object id="SprintData" type="PMS.Data.Data.SprintData, PMS.Data" parent="BaseData">
+  </object> 
   
   <!--RoleTypeData-->
   <object id="RoleTypeData" type="PMS.Data.Data.RoleTypeData, PMS.Data" parent="BaseData">
-  </object>
-  
-  <!--RoleTypeData-->
-  <object id="SprintData" type="PMS.Data.Data.SprintData, PMS.Data" parent="BaseData">
   </object>
 
   <!--Repository-->
@@ -75,11 +71,10 @@
     <property name="IssueData" ref="IssueData"/>
     <property name="LocalisationData" ref="LocalisationData"/>
     <property name="MediaContentData" ref="MediaContentData"/>
-    <property name="ObjectTypeData" ref="ObjectTypeData"/>
     <property name="PrincipalData" ref="PrincipalData"/>
     <property name="ProjectData" ref="ProjectData"/>
     <property name="RoleData" ref="RoleData"/>
-    <property name="RoleTypeData" ref="RoleTypeData"/>
     <property name="SprintData" ref="SprintData"/>
+    <property name="RoleTypeData" ref="RoleTypeData"/>
   </object>
 </objects>

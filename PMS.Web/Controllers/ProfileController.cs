@@ -16,7 +16,7 @@ namespace PMS.Web.Controllers
 
 
         [HttpGet]
-        public override ActionResult Index()
+        public ActionResult Index()
         {
             UserPrincipal principal = UserPrincipal.CurrentUser;
             ExecutionResult<PrincipalDto> result =
@@ -27,7 +27,7 @@ namespace PMS.Web.Controllers
                 return View(model);
             }
             ModelState.AddModelError(String.Empty, "Error during processing request");
-            return RedirectToAction(DashboardController.IndexAction, DashboardController.IndexAction);
+            return RedirectToAction(DashboardController.IndexAction, DashboardController.Name);
         }
     }
 }

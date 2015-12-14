@@ -2,33 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using Levshits.Data;
+using Levshits.Data.Common;
 using Levshits.Data.Data;
 using NHibernate.Criterion;
-using NHibernate.SqlCommand;
 using NHibernate.Transform;
 using PMS.Common.ListItem;
 using PMS.Data.Enity;
 
 namespace PMS.Data.Data
 {
-    public class ActionData: BaseData<ActionEntity>
+    public class RoleTypeData : BaseData<RoleTypeEntity>
     {
-        public ActionData(DataProvider dataProvider) : base(dataProvider)
+        public RoleTypeData(DataProvider dataProvider) : base(dataProvider)
         {
         }
-        public List<LookupItem> GetLookupList(Guid roleTypeId)
+
+        public List<LookupItem> GetLookupList()
         {
-            RoleTypeActionEntity entity = null;
-            ActionEntity actionEntity = null;
+            RoleTypeEntity entity = null;
             LookupItem listItem = null;
             var query = DataProvider.QueryOver(() => entity);
-            query.JoinAlias(x => x.ActionIdObject, () => actionEntity, JoinType.InnerJoin);
 
             var projections = Projections.ProjectionList();
-            projections.Add(Projections.Property(() => actionEntity.Id).WithAlias(() => listItem.Id));
-            projections.Add(Projections.Property(() => actionEntity.Name).WithAlias(() => listItem.Value));
+            projections.Add(Projections.Property(() => entity.Id).WithAlias(() => listItem.Id));
+            projections.Add(Projections.Property(() => entity.Name).WithAlias(() => listItem.Value));
 
-            query.Where(x => x.RoleTypeId == roleTypeId);
             query.Select(projections);
             var result =
                 query.TransformUsing(Transformers.AliasToBean<LookupItem>())

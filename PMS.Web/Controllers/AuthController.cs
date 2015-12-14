@@ -19,7 +19,7 @@ namespace PMS.Web.Controllers
         public const string LoginAction = "Login";
         public const string Name = "Auth";
 
-        public override ActionResult Index()
+        public ActionResult Index()
         {
             var model = new UserLoginModel();
             return View(model);

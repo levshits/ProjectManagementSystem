@@ -67,6 +67,7 @@
     <Compile Include="Data\IssueData.cs" />
     <Compile Include="Data\MediaContentData.cs" />
     <Compile Include="Data\LocalisationData.cs" />
+    <Compile Include="Data\RoleTypeData.cs" />
     <Compile Include="Data\SprintData.cs" />
     <Compile Include="Data\RoleData.cs" />
     <Compile Include="Data\ProjectData.cs" />

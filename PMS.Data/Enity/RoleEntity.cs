@@ -14,10 +14,12 @@ namespace PMS.Data.Enity
         public virtual PrincipalEntity CreatorIdObject { get; set; }
         public virtual DateTime CreateTime { get; set; }
         public virtual IList<ActionEntity> ActionEntities { get; protected set; }
+        public virtual IList<RoleActionEntity> RoleActionEntities { get; protected set; }
 
         public RoleEntity()
         {
             ActionEntities = new List<ActionEntity>();
+            RoleActionEntities = new List<RoleActionEntity>();
         }
     }
 }

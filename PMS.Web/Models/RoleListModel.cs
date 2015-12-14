@@ -1,6 +1,6 @@
 ﻿namespace PMS.Web.Models
 {
-    public class RoleListModel: ListModel<RoleListItem>
+    public class RoleListModel: ListModel<RoleListItemModel>
     {
          
     }

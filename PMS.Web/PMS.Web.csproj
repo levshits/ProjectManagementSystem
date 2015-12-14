@@ -175,6 +175,7 @@
     <Compile Include="Attributes\LocalisedAttribute.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\IssueController.cs" />
     <Compile Include="Controllers\MediaContentController.cs" />
@@ -191,11 +192,15 @@
     <Compile Include="HtmlHelpers\PaginationHelper.cs" />
     <Compile Include="HtmlHelpers\Translator.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\CreateRoleFirstStepModel.cs" />
+    <Compile Include="Models\CreateRoleSecondStepModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\DataMapper.cs" />
     <Compile Include="Models\ListItemModel.cs" />
     <Compile Include="Models\ListModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
-    <Compile Include="Models\RoleListItem.cs" />
+    <Compile Include="Models\RoleDetailsModel.cs" />
+    <Compile Include="Models\RoleListItemModel.cs" />
     <Compile Include="Models\RoleListModel.cs" />
     <Compile Include="Models\UserDetailsModel.cs" />
     <Compile Include="Models\UserListItemModel.cs" />
@@ -206,19 +211,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configs\Common.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configs\Controller.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configs\Data.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configs\log4net.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Configs\Logic.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\bootstrap\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
@@ -229,7 +234,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Configs\Spring.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -273,6 +278,9 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_ItemsListLayout.cshtml" />
+    <Content Include="Views\Role\CreateFirstStep.cshtml" />
+    <Content Include="Views\Role\CreateSecondStep.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

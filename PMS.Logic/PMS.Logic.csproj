@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blo\ActionBlo.cs" />
     <Compile Include="Blo\ActivityBlo.cs" />
     <Compile Include="Blo\IssueBlo.cs" />
     <Compile Include="Blo\LocalisationBlo.cs" />

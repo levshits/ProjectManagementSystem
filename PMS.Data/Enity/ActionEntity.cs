@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Levshits.Data.Entity;
 
 namespace PMS.Data.Enity
@@ -8,5 +9,11 @@ namespace PMS.Data.Enity
         public virtual Guid ObjectTypeId { get; set; }
         public virtual string Name { get; set; }
         public virtual ObjectTypeEntity ObjectTypeIdObject { get; set; }
+        public virtual IList<RoleEntity> RoleEntities { get; set; }
+
+        public ActionEntity()
+        {
+            RoleEntities = new List<RoleEntity>();
+        } 
     }
 }

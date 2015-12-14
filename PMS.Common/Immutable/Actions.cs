@@ -10,7 +10,6 @@ namespace PMS.Common.Immutable
 
         public const string CreateRole = "8CB90CDF-324F-4D5A-AE1E-3EB489B8C524";
         public const string SaveRole = "39DB2DBA-387C-4400-AC39-C136F8A481DF";
-        public const string RemoveRole = "EC3A247C-4F56-401A-8101-0B8407DB9347";
         public const string ViewRole = "8B480214-F6BC-4646-8AEE-A8AC2FF938A5";
 
         public const string CreateProject = "F799004B-096F-4DC3-9D15-60699D23E918";
@@ -33,7 +32,6 @@ namespace PMS.Common.Immutable
 
         public static readonly Guid CREATE_ROLE = new Guid(CreateRole);
         public static readonly Guid SAVE_ROLE = new Guid(SaveRole);
-        public static readonly Guid REMOVE_ROLE = new Guid(RemoveRole);
         public static readonly Guid VIEW_ROLE = new Guid(ViewRole);
 
         public static readonly Guid CREATE_PROJECT = new Guid(CreateProject);

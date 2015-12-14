@@ -1,11 +1,59 @@
 ﻿@model RoleListModel
 
+@using PMS.Common
+@using PMS.Common.Immutable
+@using PMS.Web.Controllers
 @using PMS.Web.HtmlHelpers
 
 @{
-    ViewBag.Title = @Html.Text("Dashboard");
+    ViewBag.Title = @Html.Text("Roles");
     Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+    UserPrincipal principal = (UserPrincipal)User;
 }
+<div class="container">
+    <h2>@Html.Text("Roles")</h2>
+    @if (principal.PermittedActions.Contains(Actions.CREATE_ROLE))
+    {
+        <p>
+            @Html.ActionLink(@Html.Text("Create new"), "Create", null, new {@class = "btn btn-default" })
+        </p>
+    }
+    @if (!Model.Items.Any())
+    {
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.Text("Role name")
+                </th>
+                <th>
+                    @Html.Text("Role type name")
+                </th>
+                <th></th>
+            </tr>
 
-<h2>@Html.Text("Roles")</h2>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoleTypeName)
+                    </td>
+                    <td>
+                        @if (item.AllowEdit && principal.PermittedActions.Contains(Actions.SAVE_ROLE))
+                        {
+                            @Html.ActionLink(@Html.Text("Edit"), "Edit", new {id = item.Id}, new {@class= "btn btn-default btn-warning" })
+                        }
+                    </td>
+                </tr>
+            }
 
+        </table>
+    }
+    @Html.PageLinks(Model.PagingInfo, x=>Url.Action(RoleController.IndexAction, RoleController.Name, new {page=x}))
+
+</div>

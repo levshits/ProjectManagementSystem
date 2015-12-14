@@ -10,27 +10,19 @@ namespace PMS.Web.Attributes
     [AttributeUsage(AttributeTargets.Property|AttributeTargets.Field)]
     public class LocalisedAttribute : DisplayNameAttribute
     {
-        private static Translator _translator;
-        public static Translator Translator
-        {
-            get
-            {
-                if (_translator == null)
-                {
-                    IApplicationContext context = ContextRegistry.GetContext();
-                    _translator = context.GetObject<Translator>();
-                }
-                return _translator;
-            }
-        }
+        public Translator Translator { get; }
+
         public LocalisedAttribute([CallerMemberName] string displayName = null)
-            : base(GetLocalizedString(displayName))
+            : base()
         {
+            //IApplicationContext context = ContextRegistry.GetContext();
+            //Translator = context.GetObject<Translator>();
+            DisplayNameValue = GetLocalizedString(displayName);
         }
 
-        public static string GetLocalizedString(string id)
+        public string GetLocalizedString(string id)
         {
-            return Translator.Translate(id);
+            return id;
         }
     }
 }

@@ -12,7 +12,6 @@ namespace PMS.Logic.Blo
 
         public override void Init()
         {
-            throw new System.NotImplementedException();
         }
 
         public override int Priority { get; }

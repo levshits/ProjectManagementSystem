@@ -9,7 +9,7 @@ namespace PMS.Common.ListItem
         public string Name { get; set; }
         public string Description { get; set; }
         public Guid RoleTypeId { get; set; }
-        public RoleTypeDto RoleTypeIdObject { get; set; }
+        public string RoleTypeName { get; set; }
 
     }
 }

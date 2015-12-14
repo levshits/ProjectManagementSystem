@@ -10,7 +10,7 @@ namespace PMS.Web.Controllers
         public const string IndexAction = "Index";
         public const string Name = "Dashboard";
 
-        public override ActionResult Index()
+        public ActionResult Index()
         {
             var model = new DashboardModel();
             return View(model);
