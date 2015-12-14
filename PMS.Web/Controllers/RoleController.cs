@@ -67,8 +67,7 @@ namespace PMS.Web.Controllers
             {
                 if (model.SelectedActionIds.Any())
                 {
-                    CreateRoleSecondStepModel modelSecondStep = Mapper.Map<CreateRoleSecondStepModel>(model);
-                    RoleDto dto = Mapper.Map<RoleDto>(modelSecondStep);
+                    RoleDto dto = Mapper.Map<RoleDto>(model);
                     dto.CreatorId = UserPrincipal.CurrentUser.Id;
                     dto.CreateTime = DateTime.Now;
                     dto.ActionEntities = model.SelectedActionIds.Select(x => new ActionDto() {Id = x}).ToList();
@@ -90,7 +89,7 @@ namespace PMS.Web.Controllers
             {
                 return View("CreateSecondStep", model);
             }
-            return View("Edit", model);
+            return RedirectToAction("Edit", model);
         }
 
         private void InitialiseModel(CreateRoleFirstStepModel model)

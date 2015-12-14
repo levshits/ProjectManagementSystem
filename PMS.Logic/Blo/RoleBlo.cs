@@ -27,6 +27,16 @@ namespace PMS.Logic.Blo
             RegisterCommand<RoleListRequest>(ListRequestHandler);
             RegisterCommand<RoleRemoveRequest>(RoleRemoveRequestHandler);
             RegisterCommand<GetRoleEntityRequest>(GetEntityByIdRequestHandler);
+            RegisterCommand<RoleLookupListRequest>(RoleLookupListRequestHandler);
+        }
+
+        private ExecutionResult RoleLookupListRequestHandler(RoleLookupListRequest request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            return new ExecutionResult<List<LookupItem>> { TypedResult = PmsRepository.RoleData.GetLookupList() };
         }
 
         private ExecutionResult GetEntityByIdRequestHandler(GetRoleEntityRequest request, ExecutionContext context)
@@ -90,13 +100,11 @@ namespace PMS.Logic.Blo
                     entity.RoleActionEntities.Add(new RoleActionEntity() {ActionId = actionEntity.Id, RoleId = entity.Id});
                 }
             }
-            foreach (var roleActionEntity in entity.RoleActionEntities)
-            {
 
-                if (dto.ActionEntities.All(x => x.Id != roleActionEntity.ActionId))
-                {
-                    entity.RoleActionEntities.Remove(roleActionEntity);
-                }
+            var removedRoles = entity.RoleActionEntities.Where(roleActionEntity => dto.ActionEntities.All(x => x.Id != roleActionEntity.RoleId)).ToList();
+            foreach (var principalRoleEntity in removedRoles)
+            {
+                entity.RoleActionEntities.Remove(principalRoleEntity);
             }
             PmsRepository.RoleData.Save(entity);
 

@@ -8,20 +8,33 @@ using PMS.Web.Attributes;
 
 namespace PMS.Web.Models
 {
-    public class UserDetailsModel: ModelBase
+    public class CreateUserModel: ModelBase
     {
+        [Required]
+        [Localised()]
+        public string Username { get; set; }
         [Required]
         [Localised()]
         public string FirstName { get; set; }
         [Required]
         [Localised()]
         public string LastName { get; set; }
+
         [Required]
         [Localised()]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+        [Required]
+        [Localised()]
+        [Compare(nameof(Password))]
+        [DataType(DataType.Password)]
+        public string PasswordConfirmation { get; set; }
+
+        [Required]
+        [Localised()]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        public IList<RoleDto> RolesEntities { get; set; }
-        public IList<ProjectDto> ProjectEntities { get; set; }
         public List<LookupItem> AvailableRoles { get; set; }
         public List<LookupItem> SelectedRoles { get; set; }
         public Guid[] SelectedRolesIds { get; set; }
@@ -30,7 +43,7 @@ namespace PMS.Web.Models
         public List<LookupItem> SelectedProjects { get; set; }
         public Guid[] SelectedProjectsIds { get; set; }
 
-        public UserDetailsModel()
+        public CreateUserModel()
         {
             AvailableRoles = new List<LookupItem>();
             SelectedRoles = new List<LookupItem>();
@@ -38,8 +51,6 @@ namespace PMS.Web.Models
             AvailableProjects = new List<LookupItem>();
             SelectedProjects = new List<LookupItem>();
             SelectedProjectsIds = new Guid[0];
-            RolesEntities = new List<RoleDto>();
-            ProjectEntities = new List<ProjectDto>();
 
         }
     }

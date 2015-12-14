@@ -1,14 +1,71 @@
-﻿@using PMS.Web.Controllers
+﻿@model UserListModel
+
+@using PMS.Common
+@using PMS.Common.Immutable
+@using PMS.Web.Controllers
 @using PMS.Web.HtmlHelpers
-@model UserListModel
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = @Html.Text("Users");
+    Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+    UserPrincipal principal = (UserPrincipal)User;
 }
+<div class="container">
+    <h2>@Html.Text("Users")</h2>
+    @if (principal.PermittedActions.Contains(Actions.CREATE_PRINCIPAL))
+    {
+        <p>
+            @Html.ActionLink(@Html.Text("Create new"), "Create", null, new { @class = "btn btn-default" })
+        </p>
+    }
+    @if (!Model.Items.Any())
+    {
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.Text("Username")
+                </th>
+                <th>
+                    @Html.Text("First name")
+                </th>
+                <th>
+                    @Html.Text("Last name")
+                </th>
+                <th>
+                    @Html.Text("Email")
+                </th>
+                <th></th>
+            </tr>
 
-<h2>Index</h2>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @if (item.AllowEdit && principal.PermittedActions.Contains(Actions.SAVE_ROLE))
+                        {
+                            @Html.ActionLink(@Html.Text("Edit"), "Edit", new { id = item.Id }, new { @class = "btn btn-default btn-warning" })
+                        }
+                    </td>
+                </tr>
+            }
 
-<div class="pagination">
-    @Html.PageLinks(Model.PagingInfo, (i) => Url.Action(UserController.IndexAction, UserController.Name, new { page = i}))
+        </table>
+    }
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action(UserController.IndexAction, UserController.Name, new { page = x }))
+
 </div>

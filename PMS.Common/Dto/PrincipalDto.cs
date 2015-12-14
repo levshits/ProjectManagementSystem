@@ -11,7 +11,10 @@ namespace PMS.Common.Dto
         public string LastName { get; set; }
         public DateTime CreateTime { get; set; }
         public string Email { get; set; }
-        public IList<RoleDto> Roles { get; set; }
+        public string OldPassword { get; set; }
+        public string Password { get; set; }
+        public IList<RoleDto> RolesEntities { get; set; }
+        public IList<ProjectDto> ProjectEntities { get; set; }
         public IList<ActionDto> Actions { get; set; }
     }
 }

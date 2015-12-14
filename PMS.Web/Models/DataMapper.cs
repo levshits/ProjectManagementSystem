@@ -19,6 +19,15 @@ namespace PMS.Web.Models
             Mapper.CreateMap<RoleDetailsModel, RoleDto>();
             Mapper.CreateMap<RoleDto, RoleDetailsModel>();
 
+            Mapper.CreateMap<PrincipalListItem, UserListItemModel>();
+            Mapper.CreateMap<UserListItemModel, PrincipalListItem>();
+
+            Mapper.CreateMap<PrincipalDto, CreateUserModel>();
+            Mapper.CreateMap<CreateUserModel, PrincipalDto>();
+
+            Mapper.CreateMap<UserDetailsModel, PrincipalDto>();
+            Mapper.CreateMap<PrincipalDto, UserDetailsModel>();
+
         } 
     }
 }

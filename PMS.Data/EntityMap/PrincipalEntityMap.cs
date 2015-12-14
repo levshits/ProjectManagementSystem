@@ -24,6 +24,9 @@ namespace PMS.Data.EntityMap
                 .ParentKeyColumn(nameof(PrincipalProjectEntity.PrincipalId))
                 .ChildKeyColumn(nameof(PrincipalProjectEntity.ProjectId));
             HasMany(x => x.IssueEntities).Cascade.None().Inverse();
+
+            HasMany(x => x.PrincipalProjectEntities).Cascade.AllDeleteOrphan();
+            HasMany(x => x.PrincipalRoleEntities).Cascade.AllDeleteOrphan();
         }
     }
 }

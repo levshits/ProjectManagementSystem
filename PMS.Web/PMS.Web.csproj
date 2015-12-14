@@ -194,6 +194,7 @@
     <Compile Include="Models\ChangePasswordModel.cs" />
     <Compile Include="Models\CreateRoleFirstStepModel.cs" />
     <Compile Include="Models\CreateRoleSecondStepModel.cs" />
+    <Compile Include="Models\CreateUserModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DataMapper.cs" />
     <Compile Include="Models\ListItemModel.cs" />
@@ -281,6 +282,8 @@
     <Content Include="Views\Role\CreateFirstStep.cshtml" />
     <Content Include="Views\Role\CreateSecondStep.cshtml" />
     <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

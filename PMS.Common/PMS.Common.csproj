@@ -72,6 +72,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\GetEntityByIdRequest.cs" />
     <Compile Include="Request\GetEntityDtoByIdRequest.cs" />
+    <Compile Include="Request\GetPrincipalEntitybyIdRequest.cs" />
     <Compile Include="Request\GetRoleEntityRequest.cs" />
     <Compile Include="Request\IssueListRequest.cs" />
     <Compile Include="Request\ListRequest.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Request\ActionsLookupListRequest.cs" />
     <Compile Include="Request\ProjectLookupListRequest.cs" />
     <Compile Include="Request\RoleRemoveRequest.cs" />
+    <Compile Include="Request\RoleLookupListRequest.cs" />
     <Compile Include="Request\RoleTypeLookupListRequest.cs" />
     <Compile Include="Request\PrincipalListRequest.cs" />
     <Compile Include="Request\PrincipalSaveRequest.cs" />
