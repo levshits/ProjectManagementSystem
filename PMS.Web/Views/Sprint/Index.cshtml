@@ -1,4 +1,4 @@
-﻿@model UserListModel
+﻿@model SprintListModel
 
 @using PMS.Common
 @using PMS.Common.Immutable
@@ -6,13 +6,13 @@
 @using PMS.Web.HtmlHelpers
 
 @{
-    ViewBag.Title = @Html.Text("Users");
+    ViewBag.Title = @Html.Text("Sprints");
     Layout = "~/Views/Shared/_PrivateLayout.cshtml";
     UserPrincipal principal = (UserPrincipal)User;
 }
 <div class="container">
-    <h2>@Html.Text("Users")</h2>
-    @if (principal.PermittedActions.Contains(Actions.CREATE_PRINCIPAL))
+    <h2>@Html.Text("Sprints")</h2>
+    @if (principal.PermittedActions.Contains(Actions.CREATE_SPRINT))
     {
         <p>
             @Html.ActionLink(@Html.Text("Create new"), "Create", null, new { @class = "btn btn-default" })
@@ -20,7 +20,6 @@
     }
     @if (!Model.Items.Any())
     {
-        <h5>@Html.Text("No items found")</h5>
     }
     else
     {
@@ -45,19 +44,19 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Username)
+                        @Html.DisplayFor(modelItem => item.ProjectName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
+                        @Html.DisplayFor(modelItem => item.ProjectVersion)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
+                        @Html.DisplayFor(modelItem => item.StartTime)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Email)
+                        @Html.DisplayFor(modelItem => item.EndTime)
                     </td>
                     <td>
-                        @if (item.AllowEdit && principal.PermittedActions.Contains(Actions.SAVE_PRINCIPAL))
+                        @if (item.AllowEdit && principal.PermittedActions.Contains(Actions.SAVE_SPRINT))
                         {
                             @Html.ActionLink(@Html.Text("Edit"), "Edit", new { id = item.Id }, new { @class = "btn btn-default btn-warning" })
                         }
@@ -67,6 +66,6 @@
 
         </table>
     }
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action(UserController.IndexAction, UserController.Name, new { page = x }))
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action(SprintController.IndexAction, SprintController.Name, new { page = x }))
 
 </div>

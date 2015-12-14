@@ -11,6 +11,17 @@ namespace PMS.Web.Models
             Mapper.CreateMap<RoleListItem, RoleListItemModel>();
             Mapper.CreateMap<RoleListItemModel, RoleListItem>();
 
+            Mapper.CreateMap<ProjectListItem, ProjectListItemModel>();
+            Mapper.CreateMap<ProjectListItemModel, ProjectListItem>();
+
+            Mapper.CreateMap<IssueListItem, IssueListItemModel>();
+
+            Mapper.CreateMap<CreateIssueModel, IssueDto>();
+            Mapper.CreateMap<IssueDto, CreateIssueModel>();
+
+            Mapper.CreateMap<CreateProjectModel, ProjectDto>();
+            Mapper.CreateMap<ProjectDto, CreateProjectModel>();
+
             Mapper.CreateMap<CreateRoleFirstStepModel, CreateRoleSecondStepModel>();
             Mapper.CreateMap<CreateRoleSecondStepModel, CreateRoleFirstStepModel>();
 
@@ -27,6 +38,9 @@ namespace PMS.Web.Models
 
             Mapper.CreateMap<UserDetailsModel, PrincipalDto>();
             Mapper.CreateMap<PrincipalDto, UserDetailsModel>();
+
+            Mapper.CreateMap<CreateSprintModel, SprintDto>();
+            Mapper.CreateMap<SprintDto, CreateSprintModel>();
 
         } 
     }

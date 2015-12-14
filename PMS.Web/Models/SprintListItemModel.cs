@@ -1,10 +1,8 @@
 ﻿using System;
-using Levshits.Data.Item;
-using PMS.Common.Dto;
 
-namespace PMS.Common.ListItem
+namespace PMS.Web.Models
 {
-    public class SprintListItem: BaseItem
+    public class SprintListItemModel: ListItemModel
     {
         public Guid ProjectId { get; set; }
         public string ProjectName { get; set; }

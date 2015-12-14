@@ -12,6 +12,7 @@ namespace PMS.Common.Dto
         public virtual int Status { get; set; }
         public virtual int Priority { get; set; }
         public virtual Guid AssigneeId { get; set; }
+        public virtual Guid SprintId { get; set; }
         public virtual TimeSpan EstimatedTime { get; set; }
         public virtual DateTime CreateTime { get; set; }
     }

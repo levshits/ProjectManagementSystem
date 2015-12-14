@@ -1,5 +1,6 @@
 ﻿using Levshits.Data;
 using Levshits.Data.Common;
+using PMS.Common.Immutable;
 using PMS.Data.Enity;
 
 namespace PMS.Logic.Blo
@@ -14,6 +15,6 @@ namespace PMS.Logic.Blo
         {
         }
 
-        public override int Priority { get; }
+        public override int Priority => PriorityLevels.FIRST_LEVEL;
     }
 }

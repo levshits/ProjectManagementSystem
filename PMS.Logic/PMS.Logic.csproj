@@ -53,6 +53,7 @@
     <Compile Include="Blo\LocalisationBlo.cs" />
     <Compile Include="Blo\MediaContentBlo.cs" />
     <Compile Include="Blo\PrincipalBlo.cs" />
+    <Compile Include="Blo\SprintBlo.cs" />
     <Compile Include="Blo\ProjectBlo.cs" />
     <Compile Include="Blo\RoleBlo.cs" />
     <Compile Include="Blo\RoleTypeBlo.cs" />

@@ -48,5 +48,22 @@ namespace PMS.Data.Data
             query.Where(x => x.Username == username && x.Password == password);
             return query.SingleOrDefault();
         }
+
+        public List<LookupItem> GetLookupList()
+        {
+            PrincipalEntity entity = null;
+            LookupItem listItem = null;
+            var query = DataProvider.QueryOver(() => entity);
+
+            var projections = Projections.ProjectionList();
+            projections.Add(Projections.Property(() => entity.Id).WithAlias(() => listItem.Id));
+            projections.Add(Projections.Property(() => entity.Username).WithAlias(() => listItem.Value));
+
+            query.Select(projections);
+            var result =
+                query.TransformUsing(Transformers.AliasToBean<LookupItem>())
+                    .List<LookupItem>();
+            return result.ToList(); ;
+        }
     }
 }

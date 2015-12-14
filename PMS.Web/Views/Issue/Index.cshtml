@@ -1,0 +1,86 @@
+﻿@model IssueListModel
+
+@using PMS.Common
+@using PMS.Common.Immutable
+@using PMS.Web.Controllers
+@using PMS.Web.HtmlHelpers
+
+@{
+    ViewBag.Title = @Html.Text("Issues");
+    Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+    UserPrincipal principal = (UserPrincipal)User;
+}
+<div class="container">
+    <h2>@Html.Text("Issues")</h2>
+    @if (principal.PermittedActions.Contains(Actions.CREATE_ISSUE))
+    {
+        <p>
+            @Html.ActionLink(@Html.Text("Create new"), "Create", null, new { @class = "btn btn-default" })
+        </p>
+    }
+    @if (!Model.Items.Any())
+    {
+        <h5>@Html.Text("No items found")</h5>
+    }
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.Text("Project")
+                </th>
+                <th>
+                    @Html.Text("Name")
+                </th>
+                <th>
+                    @Html.Text("Priority")
+                </th>
+                <th>
+                    @Html.Text("Type")
+                </th>
+                <th>
+                    @Html.Text("Status")
+                </th>
+                <th>
+                    @Html.Text("Assignee")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProjectName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssigneeName)
+                    </td>
+                    <td>
+                        @Html.ActionLink(@Html.Text("Details"), "Details", new { id = item.Id }, new { @class = "btn btn-default btn-info" })
+
+                        @if (item.AllowEdit && principal.PermittedActions.Contains(Actions.SAVE_SPRINT))
+                        {
+                            @Html.ActionLink(@Html.Text("Edit"), "Edit", new {id = item.Id}, new {@class = "btn btn-default btn-warning"})
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action(SprintController.IndexAction, SprintController.Name, new { page = x }))
+
+</div>

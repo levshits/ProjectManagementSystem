@@ -49,4 +49,8 @@
   <!--ActionBlo-->
   <object id="ActionBlo" type="PMS.Logic.Blo.ActionBlo" parent="BloBase" init-method="Init">
   </object>
+  
+  <!--SprintBlo-->
+  <object id="SprintBlo" type="PMS.Logic.Blo.SprintBlo" parent="BloBase" init-method="Init">
+  </object>
 </objects>

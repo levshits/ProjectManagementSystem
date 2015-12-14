@@ -192,17 +192,29 @@
     <Compile Include="HtmlHelpers\PaginationHelper.cs" />
     <Compile Include="HtmlHelpers\Translator.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\CreateIssueModel.cs" />
+    <Compile Include="Models\CreateProjectModel.cs" />
     <Compile Include="Models\CreateRoleFirstStepModel.cs" />
     <Compile Include="Models\CreateRoleSecondStepModel.cs" />
+    <Compile Include="Models\CreateSprintModel.cs" />
     <Compile Include="Models\CreateUserModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DataMapper.cs" />
+    <Compile Include="Models\IssueListItemModel.cs" />
+    <Compile Include="Models\IssueListModel.cs" />
+    <Compile Include="Models\IssuePriorityEnumModel.cs" />
+    <Compile Include="Models\IssueStatusEnumModel.cs" />
+    <Compile Include="Models\IssueTypeEnumModel.cs" />
     <Compile Include="Models\ListItemModel.cs" />
     <Compile Include="Models\ListModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\ProjectListItemModel.cs" />
+    <Compile Include="Models\ProjectListModel.cs" />
     <Compile Include="Models\RoleDetailsModel.cs" />
     <Compile Include="Models\RoleListItemModel.cs" />
     <Compile Include="Models\RoleListModel.cs" />
+    <Compile Include="Models\SprintListItemModel.cs" />
+    <Compile Include="Models\SprintListModel.cs" />
     <Compile Include="Models\UserDetailsModel.cs" />
     <Compile Include="Models\UserListItemModel.cs" />
     <Compile Include="Models\UserListModel.cs" />
@@ -284,6 +296,13 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Sprint\Index.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Issue\Index.cshtml" />
+    <Content Include="Views\Issue\Create.cshtml" />
+    <Content Include="Views\Sprint\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

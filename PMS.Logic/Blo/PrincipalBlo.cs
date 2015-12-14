@@ -29,7 +29,17 @@ namespace PMS.Logic.Blo
             RegisterCommand<GetPrincipalEntitybyIdRequest>(GetPrincipalEntitybyIdRequestHandler);
             RegisterCommand<PrincipalSaveRequest>(SavePrincipalRequestHandler);
             RegisterCommand<PrincipalListRequest>(ListRequestHandler);
+            RegisterCommand<PrincipalLookupListRequest>(PrincipalLookupListRequestHandler);
         }
+
+        private ExecutionResult PrincipalLookupListRequestHandler(PrincipalLookupListRequest request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            return new ExecutionResult<List<LookupItem>> { TypedResult = PmsRepository.PrincipalData.GetLookupList() };
+    }
 
         private ExecutionResult ListRequestHandler(PrincipalListRequest request, ExecutionContext context)
         {

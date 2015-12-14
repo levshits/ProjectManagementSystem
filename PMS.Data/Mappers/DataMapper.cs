@@ -12,6 +12,12 @@ namespace PMS.Data.Mappers
             Mapper.CreateMap<PrincipalEntity, PrincipalDto>();
             Mapper.CreateMap<PrincipalDto, PrincipalEntity>();
 
+            Mapper.CreateMap<ProjectEntity, ProjectDto>();
+            Mapper.CreateMap<ProjectDto, ProjectEntity>();
+
+            Mapper.CreateMap<SprintDto, SprintEntity>();
+            Mapper.CreateMap<SprintEntity, SprintDto>();
+
             Mapper.CreateMap<PrincipalEntity, PrincipalListItem>();
             Mapper.CreateMap<PrincipalListItem, PrincipalEntity>();
 
@@ -44,6 +50,9 @@ namespace PMS.Data.Mappers
 
             Mapper.CreateMap<IssueEntity, IssueListItem>();
             Mapper.CreateMap<IssueListItem, IssueEntity>();
+
+            Mapper.CreateMap<IssueEntity, IssueDto>();
+            Mapper.CreateMap<IssueDto, IssueEntity>();
         } 
     }
 }

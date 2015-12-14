@@ -10,6 +10,7 @@ namespace PMS.Web.Models
     public class ListModel<T>: ListModel where T: ListItemModel
     {
         public List<T> Items { get; set; }
+        public string SearchString { get; set; }
 
         public ListModel()
         {
