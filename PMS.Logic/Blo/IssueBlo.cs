@@ -41,6 +41,66 @@ namespace PMS.Logic.Blo
             RegisterCommand<SaveIssueRequest>(SaveIssueRequestHandler);
             RegisterCommand<GetIssueEntitybyIdRequest>(GetIssueEntitybyIdRequestHandler);
             RegisterCommand<SaveCommentRequest>(SaveCommentRequestHandler);
+            RegisterCommand<CloseIssueRequest>(CloseIssueRequestHandler);
+            RegisterCommand<ResolveIssueRequest>(ResolveIssueRequestHandler);
+            RegisterCommand<ReopenIssueRequest>(ReopenIssueRequestHandler);
+        }
+
+        private ExecutionResult ReopenIssueRequestHandler(ReopenIssueRequest request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            var entity = PmsRepository.IssueData.GetEntityById(request.EntityId);
+            entity.Status = (int) IssueStatusEnum.Opened;
+            PmsRepository.IssueData.Save(entity);
+            PmsRepository.ActivityData.Save(new ActivityEntity()
+            {
+                ActivityType = (int)ActivityType.ReopenItem,
+                CreateTime = DateTime.Now,
+                CreatorId = UserPrincipal.CurrentUser.Id,
+                IssueId = request.EntityId
+            });
+            return new ExecutionResult();
+        }
+
+        private ExecutionResult ResolveIssueRequestHandler(ResolveIssueRequest request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            var entity = PmsRepository.IssueData.GetEntityById(request.EntityId);
+            entity.Status = (int)IssueStatusEnum.Resolved;
+            PmsRepository.IssueData.Save(entity);
+            PmsRepository.ActivityData.Save(new ActivityEntity()
+            {
+                ActivityType = (int)ActivityType.ResolveItem,
+                CreateTime = DateTime.Now,
+                CreatorId = UserPrincipal.CurrentUser.Id,
+                IssueId = request.EntityId
+            });
+            return new ExecutionResult();
+        }
+
+        private ExecutionResult CloseIssueRequestHandler(CloseIssueRequest request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            var entity = PmsRepository.IssueData.GetEntityById(request.EntityId);
+            entity.Status = (int)IssueStatusEnum.Closed;
+            PmsRepository.IssueData.Save(entity);
+            PmsRepository.ActivityData.Save(new ActivityEntity()
+            {
+                ActivityType = (int)ActivityType.CloseItem,
+                CreateTime = DateTime.Now,
+                CreatorId = UserPrincipal.CurrentUser.Id,
+                IssueId = request.EntityId
+            });
+            return new ExecutionResult();
         }
 
         private ExecutionResult SaveCommentRequestHandler(SaveCommentRequest request, ExecutionContext context)

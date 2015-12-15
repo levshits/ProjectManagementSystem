@@ -88,15 +88,18 @@ namespace PMS.Web.Controllers
 
         public ActionResult CloseIssue(Guid id)
         {
-            return Details(id);
+            CommandBus.ExecuteCommand(new CloseIssueRequest() {EntityId = id});
+            return RedirectToAction("Details", new { id = id });
         }
         public ActionResult ResolveIssue(Guid id)
         {
-            return Details(id);
+            CommandBus.ExecuteCommand(new ResolveIssueRequest() { EntityId = id });
+            return RedirectToAction("Details", new { id = id });
         }
         public ActionResult ReopenIssue(Guid id)
         {
-            return Details(id);
+            CommandBus.ExecuteCommand(new ReopenIssueRequest() { EntityId = id });
+            return RedirectToAction("Details", new { id = id });
         }
 
         public ActionResult Edit(Guid id)

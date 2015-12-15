@@ -73,6 +73,9 @@
     <Compile Include="ListItem\SprintListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\ActivityListRequest.cs" />
+    <Compile Include="Request\ResolveIssueRequest.cs" />
+    <Compile Include="Request\ReopenIssueRequest.cs" />
+    <Compile Include="Request\CloseIssueRequest.cs" />
     <Compile Include="Request\GetEntityByIdRequest.cs" />
     <Compile Include="Request\GetEntityDtoByIdRequest.cs" />
     <Compile Include="Request\GetIssueEntitybyIdRequest.cs" />

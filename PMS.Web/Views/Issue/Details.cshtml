@@ -1,4 +1,6 @@
 ﻿@model IssueDetailsModel
+@using PMS.Common
+@using PMS.Common.Immutable
 @using PMS.Web.HtmlHelpers
 
 @{
@@ -8,41 +10,62 @@
 <h2>@Html.Text("Issue")</h2>
 <div class="col-md-5">
     <hr/>
+    <div class="btn-group">
+        @if (UserPrincipal.CurrentUser.PermittedActions.Contains(Actions.CLOSE_ISSUE) && (Model.Status == IssueStatusEnumModel.Opened || Model.Status == IssueStatusEnumModel.Submitted))
+        {
+            <div class="col-md-4">
+                @Html.ActionLink("Close", "CloseIssue", new {id = Model.Id}, new {@class = "btn btn-info"})
+            </div>
+        }
+        @if (UserPrincipal.CurrentUser.PermittedActions.Contains(Actions.RESOLVE_ISSUE) && (Model.Status == IssueStatusEnumModel.Opened || Model.Status == IssueStatusEnumModel.Submitted))
+        {
+            <div class="col-md-4">
+                @Html.ActionLink("Resolve", "ResolveIssue", new {id = Model.Id}, new {@class = "btn btn-info"})
+            </div>
+        }
+        @if (UserPrincipal.CurrentUser.PermittedActions.Contains(Actions.REOPEN_ISSUE) && (Model.Status == IssueStatusEnumModel.Closed || Model.Status == IssueStatusEnumModel.Resolved))
+        {
+            <div class="col-md-4">
+                @Html.ActionLink("Reopen", "ReopenIssue", new {id = Model.Id}, new {@class = "btn btn-info"})
+            </div>
+        }
+    </div>
+    <hr />
     @Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "form-control col-md-2"})
+        @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "form-control col-md-2" })
         <div class="col-md-5">
             @Html.DisplayFor(model => model.Name, new {htmlAttributes = new {@class = "form-control"}})
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Status, htmlAttributes: new {@class = "form-control col-md-2"})
+        @Html.LabelFor(model => model.Status, htmlAttributes: new {@class = "form-control col-md-2" })
         <div class="col-md-5">
             @Html.DisplayFor(model => model.Status, new {htmlAttributes = new {@class = "form-control"}})
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Type, htmlAttributes: new {@class = "form-control col-md-2"})
+        @Html.LabelFor(model => model.Type, htmlAttributes: new {@class = "form-control col-md-2" })
         <div class="col-md-5">
             @Html.DisplayFor(model => model.Type, new {@class = "form-control"})
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Priority, htmlAttributes: new {@class = "form-control col-md-2"})
+        @Html.LabelFor(model => model.Priority, htmlAttributes: new {@class = "form-control col-md-2" })
         <div class="col-md-5">
             @Html.DisplayFor(model => model.Priority, new {@class = "form-control"})
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.EstimatedTime, htmlAttributes: new {@class = "form-control col-md-2"})
+        @Html.LabelFor(model => model.EstimatedTime, htmlAttributes: new {@class = "form-control col-md-2" })
         <div class="col-md-5">
             @Html.DisplayFor(model => model.EstimatedTime, new {htmlAttributes = new {@class = "form-control"}})
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Assignee, htmlAttributes: new {@class = "form-control col-md-2"})
+        @Html.LabelFor(model => model.Assignee, htmlAttributes: new {@class = "form-control col-md-2" })
         <div class="col-md-5">
             @Html.DisplayFor(model => model.Assignee, new {htmlAttributes = new {@class = "form-control"}})
         </div>
