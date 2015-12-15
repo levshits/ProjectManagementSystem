@@ -16,11 +16,13 @@ namespace PMS.Web.Models
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime StartTime { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime StartTime { get; set; } = DateTime.Now;
 
         [Required]
         [DataType(DataType.Date)]
-        public DateTime EndTime { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime EndTime { get; set; } = DateTime.Now;
 
         [Required]
         public string ProjectVersion { get; set; }

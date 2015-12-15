@@ -9,8 +9,6 @@
   </object>
   <object id="RoleController" type="PMS.Web.Controllers.RoleController, PMS.Web" parent="BaseController" singleton="false">
   </object>
-  <object id="ActivityController" type="PMS.Web.Controllers.ActivityController, PMS.Web" parent="BaseController" singleton="false">
-  </object>
   <object id="IssueController" type="PMS.Web.Controllers.IssueController, PMS.Web" parent="BaseController" singleton="false">
   </object>
   <object id="MediaContentController" type="PMS.Web.Controllers.MediaContentController, PMS.Web" parent="BaseController" singleton="false">

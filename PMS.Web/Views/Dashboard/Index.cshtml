@@ -1,9 +1,61 @@
-﻿@using PMS.Web.HtmlHelpers
-@model DashboardModel
+﻿@model DashboardModel
+@using PMS.Common
+@using PMS.Common.Immutable
+@using PMS.Web.Controllers
+@using PMS.Web.HtmlHelpers
 
 @{
     ViewBag.Title = @Html.Text("Dashboard");
     Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+    UserPrincipal principal = (UserPrincipal)User;
 }
 
 <h2>@Html.Text("Dashboard")</h2>
+@if (!Model.Items.Any())
+{
+    <h5>@Html.Text("No items found")</h5>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <td>
+                @Html.Text("Activity type")
+            </td>
+            <td>
+                @Html.Text("Create time")
+            </td>
+            <td>
+                @Html.Text("Creator")
+            </td>
+            <td>
+                @Html.Text("Issue")
+            </td>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem=>item.ActivityType)
+                </td>
+                <td>
+                   @Html.DisplayFor(modelItem => item.CreateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IssueName)
+                </td>
+                <td>
+                    @Html.ActionLink(@Html.Text("Details"), "Details","Issue", new { id = item.IssueId }, new { @class = "btn btn-default btn-info" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+@Html.PageLinks(Model.PagingInfo, x => Url.Action(SprintController.IndexAction, SprintController.Name, new { page = x }))

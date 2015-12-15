@@ -18,6 +18,7 @@ namespace PMS.Web.Models
 
             Mapper.CreateMap<CreateIssueModel, IssueDto>();
             Mapper.CreateMap<IssueDto, CreateIssueModel>();
+            Mapper.CreateMap<IssueDto, IssueDetailsModel>();
 
             Mapper.CreateMap<CreateProjectModel, ProjectDto>();
             Mapper.CreateMap<ProjectDto, CreateProjectModel>();
@@ -41,6 +42,9 @@ namespace PMS.Web.Models
 
             Mapper.CreateMap<CreateSprintModel, SprintDto>();
             Mapper.CreateMap<SprintDto, CreateSprintModel>();
+
+            Mapper.CreateMap<SprintListItem, SprintListItemModel>();
+            Mapper.CreateMap<ActivityListItem, ActivityListItemModel>();
 
         } 
     }

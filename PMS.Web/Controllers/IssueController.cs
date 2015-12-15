@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using Levshits.Data.Common;
 using Levshits.Web.Common.Controllers;
 using PMS.Common;
 using PMS.Common.Dto;
+using PMS.Common.Immutable;
 using PMS.Common.ListItem;
 using PMS.Common.Request;
 using PMS.Web.Models;
@@ -68,12 +70,48 @@ namespace PMS.Web.Controllers
 
         public ActionResult Details(Guid id)
         {
-            throw new NotImplementedException();
+            ExecutionResult<IssueDto> result = CommandBus.ExecuteCommand(new GetIssueEntitybyIdRequest() { EntityId = id }) as ExecutionResult<IssueDto>;
+            if (result != null && result.Success)
+            {
+                IssueDetailsModel model = Mapper.Map<IssueDetailsModel>(result.TypedResult);
+                model.Comments =
+                    result.TypedResult.CommentEntities.Select(
+                        x => new CommentModel {CreateTime = x.CreateTime, Text = x.Text, Creator = x.CreatorIdObject.Username}).ToList();
+                
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult CloseIssue(Guid id)
+        {
+            return Details(id);
+        }
+        public ActionResult ResolveIssue(Guid id)
+        {
+            return Details(id);
+        }
+        public ActionResult ReopenIssue(Guid id)
+        {
+            return Details(id);
         }
 
         public ActionResult Edit(Guid id)
         {
-            throw new NotImplementedException();
+            ExecutionResult<IssueDto> result = CommandBus.ExecuteCommand(new GetIssueEntitybyIdRequest() { EntityId = id }) as ExecutionResult<IssueDto>;
+            if (result != null && result.Success)
+            {
+                CreateIssueModel model = Mapper.Map<CreateIssueModel>(result.TypedResult);
+                InitialiseModel(model);
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Save(CreateIssueModel model)
@@ -82,18 +120,30 @@ namespace PMS.Web.Controllers
             {
                 IssueDto dto = Mapper.Map<IssueDto>(model);
                 dto.CreateTime = DateTime.Now;
-                var result = CommandBus.ExecuteCommand(new SaveIssueRequest() { Dto = dto });
+                var result = CommandBus.ExecuteCommand(new SaveIssueRequest() { Dto = dto, ActivityType = dto.Id==Guid.Empty? ActivityType.CreateItem: ActivityType.ChangeItem});
                 if (result.Success)
                 {
                     return RedirectToAction("Index");
                 }
                 ModelState.AddModelError(String.Empty, "Error during executing request. Try again");
             }
+            InitialiseModel(model);
             if (model.Id == Guid.Empty)
             {
                 return View("Create", model);
             }
             return View("Edit", model);
+        }
+
+        [HttpPost]
+        public ActionResult SaveComment(CreateCommentModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = CommandBus.ExecuteCommand(new SaveCommentRequest() {IssueId = model.IssueId, Text = model.Text});
+
+            }
+            return RedirectToAction("Details", new { id = model.IssueId});
         }
     }
 }

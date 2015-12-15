@@ -63,14 +63,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2">@Html.Text("Available actions")</label>
+            <label class="control-label col-md-2">@Html.Text("Available roles")</label>
             <div class="col-md-5">
                 @Html.CheckBoxListFor(x => x.SelectedRolesIds, x => x.AvailableRoles, x => x.Id, x => x.Value, x => x.SelectedRoles, Position.Vertical)
             </div>
             @Html.ValidationMessageFor(x => x.SelectedRoles)
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2">@Html.Text("Available actions")</label>
+            <label class="control-label col-md-2">@Html.Text("Available projects")</label>
             <div class="col-md-5">
                 @Html.CheckBoxListFor(x => x.SelectedProjectsIds, x => x.AvailableProjects, x => x.Id, x => x.Value, x => x.SelectedProjects, Position.Vertical)
             </div>

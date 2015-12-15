@@ -15,7 +15,7 @@
   </object>
 
   <!--PrincipalBlo-->
-  <object id="PrincipalBlo" type="PMS.Logic.Blo.PrincipalBlo" parent="BloBase" init-method="Init">
+  <object id="PrincipalBlo" type="PMS.Logic.Blo.PrincipalBlo, PMS.Logic" parent="BloBase" init-method="Init">
   </object>
 
   <!--LocalisationBlo-->

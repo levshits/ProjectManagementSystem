@@ -54,6 +54,7 @@
     <Compile Include="Dto\RoleTypeDto.cs" />
     <Compile Include="Dto\SprintDto.cs" />
     <Compile Include="Immutable\Actions.cs" />
+    <Compile Include="Immutable\ActivityType.cs" />
     <Compile Include="Immutable\ContentTypeEnum.cs" />
     <Compile Include="Immutable\IssuePriorityEnum.cs" />
     <Compile Include="Immutable\IssueStatusEnum.cs" />
@@ -74,13 +75,16 @@
     <Compile Include="Request\ActivityListRequest.cs" />
     <Compile Include="Request\GetEntityByIdRequest.cs" />
     <Compile Include="Request\GetEntityDtoByIdRequest.cs" />
+    <Compile Include="Request\GetIssueEntitybyIdRequest.cs" />
     <Compile Include="Request\GetPrincipalEntitybyIdRequest.cs" />
     <Compile Include="Request\GetProjectEntitybyIdRequest.cs" />
     <Compile Include="Request\GetRoleEntityRequest.cs" />
+    <Compile Include="Request\GetSprintEntityByIdRequest.cs" />
     <Compile Include="Request\IssueListRequest.cs" />
     <Compile Include="Request\ListRequest.cs" />
     <Compile Include="Request\LoginRequest.cs" />
     <Compile Include="Request\ProjectSaveRequest.cs" />
+    <Compile Include="Request\SaveCommentRequest.cs" />
     <Compile Include="Request\SaveSprintRequest.cs" />
     <Compile Include="Request\SprintLookupListRequest.cs" />
     <Compile Include="Request\SprintListRequest.cs" />

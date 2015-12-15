@@ -7,43 +7,32 @@ using PMS.Web.Attributes;
 
 namespace PMS.Web.Models
 {
-    public class CreateIssueModel: ModelBase
+    public class IssueDetailsModel: ModelBase
     {
-        [Required]
         [Localised]
         public string Name { get; set; }
-        [Required]
         [Localised]
         public string Description { get; set; }
-        [Required]
         [Localised]
         public IssueTypeEnumModel Type { get; set; }
-        [Required]
         [Localised]
-        public Guid ProjectId { get; set; }
-        public IList<LookupItem> ProjectLookupItems { get; set; }
+        public string ProjectName { get; set; }
         [Localised]
-        public Guid SprintId { get; set; }
-        public IList<LookupItem> SprintLookupItems { get; set; }
-
         public IssueStatusEnumModel Status { get; set; }
-        [Required]
         [Localised]
         public IssuePriorityEnumModel Priority { get; set; }
-        [Required]
         [Localised]
-        public Guid AssigneeId { get; set; }
-        public IList<LookupItem> PrincipalLookupItems { get; set; }
-        [Required]
+        public String Assignee { get; set; }
         [Localised]
         [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         public TimeSpan EstimatedTime { get; set; }
 
-        public CreateIssueModel()
+        public List<CommentModel> Comments { get; set; } 
+        public CreateCommentModel CreateCommentModel { get; set; }
+
+        public IssueDetailsModel()
         {
-            SprintLookupItems = new List<LookupItem>();
-            PrincipalLookupItems = new List<LookupItem>();
-            ProjectLookupItems = new List<LookupItem>();
+            Comments = new List<CommentModel>();
         }
     }
 }

@@ -39,7 +39,16 @@ namespace PMS.Web.Controllers
 
         public ActionResult Edit(Guid id)
         {
-            throw new NotImplementedException();
+            ExecutionResult<ProjectDto> result = CommandBus.ExecuteCommand(new GetSprintEntityByIdRequest() { EntityId = id }) as ExecutionResult<ProjectDto>;
+            if (result != null && result.Success)
+            {
+                CreateSprintModel model = Mapper.Map<CreateSprintModel>(result.TypedResult);
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Index(int page = 0)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Levshits.Data.Entity;
 
 namespace PMS.Data.Enity
@@ -10,5 +11,11 @@ namespace PMS.Data.Enity
         public virtual DateTime StartTime { get; set; }
         public virtual DateTime EndTime { get; set; }
         public virtual string ProjectVersion { get; set; }
+        public virtual IList<IssueEntity> IssueEntities { get; set; }
+
+        public SprintEntity()
+        {
+            IssueEntities = new List<IssueEntity>();
+        } 
     }
 }

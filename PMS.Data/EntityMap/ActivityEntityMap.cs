@@ -10,7 +10,6 @@ namespace PMS.Data.EntityMap
             Table("Activity");
 
             Id(x => x.Id).GeneratedBy.Guid();
-            Version(x => x.Version);
 
             Map(x => x.ActivityType);
             Map(x => x.CreateTime);

@@ -24,6 +24,18 @@ namespace PMS.Logic.Blo
             RegisterCommand<SprintLookupListRequest>(SprintLookupListRequestHandler);
             RegisterCommand<SprintListRequest>(SprintListRequestHandler);
             RegisterCommand<SaveSprintRequest>(SaveSprintRequestHandler);
+            RegisterCommand<GetSprintEntityByIdRequest>(GetSprintEntityByIdRequestHandler);
+        }
+
+        private ExecutionResult GetSprintEntityByIdRequestHandler(GetSprintEntityByIdRequest request, ExecutionContext context)
+        {
+            if (request == null)
+            {
+                return null;
+            }
+            var entity = PmsRepository.SprintData.GetEntityById(request.EntityId);
+            SprintDto dto = Mapper.Map<SprintDto>(entity);
+            return new ExecutionResult<SprintDto> { TypedResult = dto };
         }
 
         private ExecutionResult SaveSprintRequestHandler(SaveSprintRequest request, ExecutionContext context)

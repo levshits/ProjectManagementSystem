@@ -47,6 +47,8 @@ namespace PMS.Data.Mappers
 
             Mapper.CreateMap<CommentEntity, CommentListItem>();
             Mapper.CreateMap<CommentListItem, CommentEntity>();
+            Mapper.CreateMap<CommentEntity, CommentDto>();
+            Mapper.CreateMap<CommentDto, CommentDto>();
 
             Mapper.CreateMap<IssueEntity, IssueListItem>();
             Mapper.CreateMap<IssueListItem, IssueEntity>();

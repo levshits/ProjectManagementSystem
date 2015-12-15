@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Levshits.Data.Dto;
 
 namespace PMS.Common.Dto
@@ -9,5 +10,6 @@ namespace PMS.Common.Dto
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string ProjectVersion { get; set; }
+        public virtual IList<IssueDto> IssueEntities { get; set; }
     }
 }

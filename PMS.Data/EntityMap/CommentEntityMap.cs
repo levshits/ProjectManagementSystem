@@ -10,7 +10,6 @@ namespace PMS.Data.EntityMap
             Table("Comment");
 
             Id(x => x.Id).GeneratedBy.Guid();
-            Version(x => x.Version);
 
             Map(x => x.Text);
             Map(x => x.CreatorId);

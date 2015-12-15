@@ -1,6 +1,6 @@
 ﻿namespace PMS.Web.Models
 {
-    public class DashboardModel
+    public class DashboardModel: ListModel<ActivityListItemModel>
     {
          
     }

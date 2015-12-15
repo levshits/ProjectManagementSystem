@@ -12,7 +12,7 @@
 }
 <div class="container">
     <h2>@Html.Text("Projects")</h2>
-    @if (principal.PermittedActions.Contains(Actions.CREATE_PRINCIPAL))
+    @if (principal.PermittedActions.Contains(Actions.CREATE_PROJECT))
     {
         <p>
             @Html.ActionLink(@Html.Text("Create new"), "Create", null, new { @class = "btn btn-default" })

@@ -18,6 +18,7 @@ namespace PMS.Data.EntityMap
             Map(x => x.ProjectVersion).Length(50);
 
             References(x => x.ProjectIdObject).Column(nameof(SprintEntity.ProjectId)).ReadOnly();
+            HasMany(x => x.IssueEntities).Cascade.AllDeleteOrphan().Inverse();
         }
     }
 }

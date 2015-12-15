@@ -84,6 +84,10 @@
       <HintPath>..\packages\MvcCheckBoxList.1.4.5\lib\net45\MvcCheckBoxList.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Spring.Core, Version=2.0.1.45000, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <HintPath>..\packages\Spring.Core.2.0.1\lib\net45\Spring.Core.dll</HintPath>
       <Private>True</Private>
@@ -163,17 +167,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Attributes\HasPermissionAttribute.cs" />
     <Compile Include="Attributes\LocalisedAttribute.cs" />
-    <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
@@ -191,7 +189,10 @@
     <Compile Include="HtmlHelpers\HtmlHelperExtensions.cs" />
     <Compile Include="HtmlHelpers\PaginationHelper.cs" />
     <Compile Include="HtmlHelpers\Translator.cs" />
+    <Compile Include="Models\ActivityListItemModel.cs" />
     <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\CreateCommentModel.cs" />
     <Compile Include="Models\CreateIssueModel.cs" />
     <Compile Include="Models\CreateProjectModel.cs" />
     <Compile Include="Models\CreateRoleFirstStepModel.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Models\CreateUserModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DataMapper.cs" />
+    <Compile Include="Models\IssueDetailModel.cs" />
     <Compile Include="Models\IssueListItemModel.cs" />
     <Compile Include="Models\IssueListModel.cs" />
     <Compile Include="Models\IssuePriorityEnumModel.cs" />
@@ -303,6 +305,9 @@
     <Content Include="Views\Issue\Index.cshtml" />
     <Content Include="Views\Issue\Create.cshtml" />
     <Content Include="Views\Sprint\Create.cshtml" />
+    <Content Include="Views\Sprint\Edit.cshtml" />
+    <Content Include="Views\Issue\Edit.cshtml" />
+    <Content Include="Views\Issue\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
